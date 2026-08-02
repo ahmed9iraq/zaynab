@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<title>شلونك؟</title>
+
+<style>
+body{
+    font-family: Arial;
+    background:#f5f5f5;
+    text-align:center;
+    margin-top:80px;
+}
+
+.container{
+    background:white;
+    width:350px;
+    margin:auto;
+    padding:20px;
+    border-radius:10px;
+    box-shadow:0 0 10px gray;
+}
+
+input{
+    width:90%;
+    padding:10px;
+    margin:10px 0;
+}
+
+button{
+    padding:10px 20px;
+    background:#2196F3;
+    color:white;
+    border:none;
+    border-radius:5px;
+    cursor:pointer;
+    margin-top:10px;
+}
+
+#nextBtn{
+    display:none;
+}
+
+#result p{
+    background:#f0f8ff;
+    padding:10px;
+    border-radius:8px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h2>شبيكي متغيره؟ </h2>
+
+    <p>اكتبي شنو الي مضوجكي🙂:</p>
+
+    <input type="text" id="reason" placeholder="اكتب هنا...">
+
+    <br>
+
+    <button onclick="showMessage()">إرسال</button>
+
+    <br>
+
+    <button id="nextBtn" onclick="showMore()">اتغيدين أكمل؟ 🌝</button>
+
+    <div id="result"></div>
+</div>
+
+<script>
+
+const messages = [
+    "هلووو زينب اشونكي اخباركي إن شاء الله زينة 😁",
+    "الصراحه معغف حسيتوكي ضيجه من شغلة بس اشنو هيه معرف",
+    "عادي اعرف اذا ماتصير زحمة",
+    "عملتو موقع بس علمود دسالكي🙂",
+    "وللعلم بعد ثلاث اشهر وانتِ ",
+    "همين غاح تتعلمين تبرمجين مواقع",
+    "هاي آخر رسالة... Good bey"
+];
+
+let index = 0;
+
+function showMessage(){
+
+    let text = document.getElementById("reason").value;
+
+    if(text==""){
+        document.getElementById("result").innerHTML =
+        "<p>حسيتوكي زعلانة من شغلة بس معرف شنو هيه.</p>";
+    }else{
+        document.getElementById("result").innerHTML =
+        "<p>"+messages[0]+"</p>";
+
+        index = 1;
+
+        document.getElementById("nextBtn").style.display = "inline-block";
+    }
+
+}
+
+function showMore(){
+
+    if(index < messages.length){
+
+        document.getElementById("result").innerHTML +=
+        "<p>"+messages[index]+"</p>";
+
+        index++;
+
+    }else{
+
+        document.getElementById("nextBtn").style.display = "none";
+
+    }
+
+}
+
+</script>
+
+</body>
+</html>
