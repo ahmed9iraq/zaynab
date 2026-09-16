@@ -291,21 +291,23 @@ const result=document.getElementById("result");
 result.style.display="block";
 
 if(choice==="yes"){
-result.innerHTML=
+result.innerHTML=`
 <div class="result">
 <div class="emoji">🌸</div>
 <h2>هااا خوش 😂❤️</h2>
 <p>تمام ياسچاچة😂 🌷</p>
 <button class="main-btn" onclick="nextPage(4)">نكمل 🌸</button>
-</div>;
+</div>
+`;
 }else{
-result.innerHTML=
+result.innerHTML=`
 <div class="result">
 <div class="emoji">🌷</div>
-<h2> تمام يابه </h2>
-<p> براحتكي سچاچة😂🌝</p>
+<h2>تمام يابه</h2>
+<p>براحتكي سچاچة😂🌝</p>
 <button class="main-btn" onclick="nextPage(4)">نكمل 🌸</button>
-</div>;
+</div>
+`;
 }
 }
 </script>
