@@ -2,164 +2,150 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>🌸 زينو</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>😂زينو</title>
+
 <style>
 *{
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:"Segoe UI",Tahoma,Arial,sans-serif;
+font-family:Arial,sans-serif;
 }
+
 body{
 min-height:100vh;
+background:linear-gradient(135deg,#fff0f6,#ffe4ef,#fff);
 display:flex;
 justify-content:center;
 align-items:center;
-padding:20px;
-background:linear-gradient(135deg,#ffe5f0,#fff5fa,#fce1ed);
+overflow:hidden;
+color:#5a3045;
+}
+
+.container{
+width:90%;
+max-width:500px;
+min-height:500px;
+background:rgba(255,255,255,.9);
+border-radius:30px;
+padding:40px 25px;
+box-shadow:0 15px 40px rgba(214,51,132,.18);
+position:relative;
 overflow:hidden;
 }
-.petal{
-position:fixed;
-top:-40px;
-font-size:25px;
-pointer-events:none;
-z-index:0;
-animation:fall linear infinite;
-opacity:.8;
-}
-.petal:nth-child(1){left:5%;animation-duration:9s;animation-delay:0s}
-.petal:nth-child(2){left:18%;animation-duration:12s;animation-delay:2s}
-.petal:nth-child(3){left:32%;animation-duration:10s;animation-delay:4s}
-.petal:nth-child(4){left:49%;animation-duration:14s;animation-delay:1s}
-.petal:nth-child(5){left:65%;animation-duration:11s;animation-delay:3s}
-.petal:nth-child(6){left:80%;animation-duration:13s;animation-delay:5s}
-.petal:nth-child(7){left:94%;animation-duration:10s;animation-delay:2s}
-@keyframes fall{
-0%{transform:translateY(-50px) rotate(0deg);opacity:0}
-15%{opacity:.8}
-100%{transform:translateY(110vh) rotate(360deg);opacity:0}
-}
-.container{
-position:relative;
-z-index:1;
-width:100%;
-max-width:430px;
-min-height:470px;
-background:rgba(255,255,255,.92);
-border:1px solid rgba(255,255,255,.9);
-border-radius:30px;
-padding:35px 25px;
-display:flex;
-align-items:center;
-justify-content:center;
-text-align:center;
-box-shadow:0 15px 55px rgba(190,55,120,.15);
-}
+
 .page{
 width:100%;
+text-align:center;
 animation:show .6s ease;
 }
+
 .hidden{
-display:none;
+display:none!important;
 }
+
 .flower{
-font-size:60px;
-margin-bottom:20px;
-animation:sway 3s ease-in-out infinite;
-}
-h1{
-font-size:29px;
-color:#c52e76;
-line-height:1.7;
+font-size:55px;
 margin-bottom:15px;
+animation:sway 2s infinite ease-in-out;
 }
+
+h1{
+font-size:30px;
+color:#d63384;
+margin-bottom:20px;
+}
+
 h2{
-font-size:23px;
-color:#b72e6d;
-line-height:1.8;
-margin-bottom:18px;
+font-size:24px;
+color:#c02b72;
+margin-bottom:20px;
 }
+
 p{
 font-size:18px;
-line-height:2;
-color:#666;
-margin-bottom:25px;
+line-height:1.8;
+margin-bottom:20px;
 }
-.quote{
-font-size:20px;
-line-height:2.2;
-color:#a52d68;
-background:#fff0f6;
-padding:20px 15px;
-border-radius:20px;
-margin:20px 0;
-}
+
 button{
-width:100%;
-border:0;
-border-radius:16px;
-padding:15px;
-font-size:18px;
-font-weight:bold;
+border:none;
 cursor:pointer;
-transition:transform .2s,filter .2s;
+font-size:17px;
+font-weight:bold;
+padding:13px 24px;
+border-radius:30px;
+transition:.3s;
 }
-button:active{
-transform:scale(.96);
-}
-button:hover{
-filter:brightness(.97);
-}
+
 .main-btn{
-background:linear-gradient(135deg,#d63384,#ed6ba7);
+background:#d63384;
 color:white;
-box-shadow:0 6px 18px rgba(214,51,132,.2);
+box-shadow:0 7px 18px rgba(214,51,132,.25);
 }
+
+.main-btn:hover{
+transform:translateY(-3px);
+background:#c52d78;
+}
+
 .outline-btn{
-background:#fff;
-color:#c52e76;
-border:1px solid #f2a6c5;
-margin-top:12px;
+background:white;
+color:#d63384;
+border:2px solid #d63384;
 }
+
+.outline-btn:hover{
+transform:translateY(-3px);
+background:#fff0f6;
+}
+
+.note{
+margin-top:25px;
+font-size:16px;
+color:#9b5b78;
+}
+
+.quote{
+background:#fff0f6;
+border-radius:20px;
+padding:18px;
+margin:20px 0;
+font-size:19px;
+color:#a13d68;
+}
+
 .buttons{
 display:flex;
-gap:12px;
+justify-content:center;
+gap:10px;
+flex-wrap:wrap;
+margin-top:15px;
 }
-.buttons button{
-flex:1;
-}
-.note{
-font-size:14px;
-color:#aaa;
-margin-top:22px;
-}
+
 .result{
-background:#fff0f6;
+margin-top:25px;
+padding:20px;
+background:#fff5f9;
 border-radius:20px;
-padding:22px 15px;
-margin-top:20px;
 animation:show .5s ease;
 }
+
 .result .emoji{
-font-size:42px;
-margin-bottom:12px;
+font-size:40px;
+margin-bottom:10px;
 }
+
 .result h2{
-margin-bottom:8px;
+margin-bottom:10px;
 }
+
 .result p{
-margin:0;
+margin-bottom:15px;
 font-size:17px;
 }
-.back{
-margin-top:20px;
-font-size:14px;
-padding:10px;
-background:transparent;
-color:#c52e76;
-}
+
 .progress{
 position:absolute;
 bottom:15px;
@@ -169,6 +155,7 @@ display:flex;
 justify-content:center;
 gap:7px;
 }
+
 .dot{
 width:8px;
 height:8px;
@@ -176,27 +163,114 @@ border-radius:50%;
 background:#f3c1d6;
 transition:.3s;
 }
+
 .dot.active{
 width:25px;
 border-radius:10px;
 background:#d63384;
 }
+
+.petal{
+position:fixed;
+font-size:25px;
+animation:fall linear infinite;
+opacity:.7;
+pointer-events:none;
+}
+
+.petal:nth-child(1){
+left:10%;
+animation-duration:7s;
+}
+
+.petal:nth-child(2){
+left:25%;
+animation-duration:9s;
+}
+
+.petal:nth-child(3){
+left:40%;
+animation-duration:8s;
+}
+
+.petal:nth-child(4){
+left:55%;
+animation-duration:10s;
+}
+
+.petal:nth-child(5){
+left:70%;
+animation-duration:7s;
+}
+
+.petal:nth-child(6){
+left:82%;
+animation-duration:9s;
+}
+
+.petal:nth-child(7){
+left:92%;
+animation-duration:8s;
+}
+
+@keyframes fall{
+0%{
+top:-50px;
+transform:rotate(0deg);
+}
+100%{
+top:110vh;
+transform:rotate(360deg);
+}
+}
+
 @keyframes show{
-from{opacity:0;transform:translateY(18px)}
-to{opacity:1;transform:translateY(0)}
+from{
+opacity:0;
+transform:translateY(18px);
 }
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
 @keyframes sway{
-0%,100%{transform:rotate(-4deg)}
-50%{transform:rotate(4deg)}
+0%,100%{
+transform:rotate(-4deg);
 }
+50%{
+transform:rotate(4deg);
+}
+}
+
 @media(max-width:360px){
-.container{padding:30px 18px;min-height:440px}
-h1{font-size:25px}
-h2{font-size:21px}
-p{font-size:16px}
-.quote{font-size:18px}
-button{font-size:16px}
+.container{
+padding:30px 18px;
+min-height:440px;
 }
+
+h1{
+font-size:25px;
+}
+
+h2{
+font-size:21px;
+}
+
+p{
+font-size:16px;
+}
+
+.quote{
+font-size:18px;
+}
+
+button{
+font-size:16px;
+}
+}
+
 @media(prefers-reduced-motion:reduce){
 *,*:before,*:after{
 animation:none!important;
@@ -205,6 +279,7 @@ transition:none!important;
 }
 </style>
 </head>
+
 <body>
 
 <div class="petal">🌸</div>
@@ -219,47 +294,80 @@ transition:none!important;
 
 <div class="page" id="page1">
 <div class="flower">🌸</div>
+
 <h1>مرحبا زينبب</h1>
+
 <p>
 اشونكي؟ اخباركي؟اموركي<br>
 إن شاء الله بخير وبأحسن حال 🌷
 </p>
-<button class="main-btn" onclick="nextPage(2)">أهلاً وسهلاً 😂</button>
-<div class="note">وجودچ يخلي كلشي أجمل 😊</div>
+
+<button type="button" class="main-btn" onclick="nextPage(2)">
+أهلاً وسهلاً 😂
+</button>
+
+<div class="note">بما اني مبرمچ فما راح اسالكي بطريقة عادية😂</div>
 </div>
+
 
 <div class="page hidden" id="page2">
 <div class="flower">🌷</div>
+
 <h2>عندي سؤال صغييرِ 🌝</h2>
+
 <div class="quote">
-  🌝🌝🌝<br>
+🌝🌝🌝<br>
 </div>
+
 <p>وبما أن الدوام قرب...</p>
-<button class="main-btn" onclick="nextPage(3)"> دكمل زيي 🌸</button>
+
+<button type="button" class="main-btn" onclick="nextPage(3)">
+دكمل زيي 🌸
+</button>
 </div>
+
 
 <div class="page hidden" id="page3">
 <div class="flower">🌸</div>
+
 <h2>زينو، راح تداومين يوم الأحد؟ 😂</h2>
+
 <p>20 / 9 / 2026</p>
+
 <div class="buttons">
-<button class="main-btn" onclick="answer('yes')">إي أداوم 😂</button>
-<button class="outline-btn" onclick="answer('no')">لا ما أداوم 😔</button>
+
+<button type="button" class="main-btn" onclick="answer('yes')">
+إي أداوم 😂
+</button>
+
+<button type="button" class="outline-btn" onclick="answer('no')">
+لا ما أداوم 😔
+</button>
+
 </div>
+
 <div id="result"></div>
 </div>
 
+
 <div class="page hidden" id="page4">
 <div class="flower">💐</div>
+
 <h1>شكراً زينو ❤️</h1>
+
 <p>
 الله يسهل عليچ ويكتب لج الخير وين ما يكون 🌷
 </p>
+
 <div class="quote">
 وجودچ يخلّي المكان أحلى 😊
 </div>
-<button class="main-btn" onclick="nextPage(1)">نرجع للبداية 🌸</button>
+
+<button type="button" class="main-btn" onclick="nextPage(1)">
+نرجع للبداية 🌸
+</button>
 </div>
+
 
 <div class="progress">
 <div class="dot active" id="dot1"></div>
@@ -270,45 +378,78 @@ transition:none!important;
 
 </div>
 
+
 <script>
-let currentPage=1;
+let currentPage = 1;
 
 function nextPage(page){
-    document.getElementById("page"+currentPage).classList.add("hidden");
-    document.getElementById("page"+page).classList.remove("hidden");
-    currentPage=page;
-    updateDots();
+
+const current = document.getElementById("page" + currentPage);
+const next = document.getElementById("page" + page);
+
+if(!current || !next){
+return;
 }
+
+current.classList.add("hidden");
+next.classList.remove("hidden");
+
+currentPage = page;
+
+updateDots();
+}
+
 
 function updateDots(){
-    for(let i=1;i<=4;i++){
-        document.getElementById("dot"+i).classList.toggle("active",i===currentPage);
-    }
+
+for(let i = 1; i <= 4; i++){
+
+const dot = document.getElementById("dot" + i);
+
+if(dot){
+dot.classList.toggle("active", i === currentPage);
 }
 
-function answer(choice){
-    const result=document.getElementById("result");
-    result.style.display="block";
+}
 
-    if(choice==="yes"){
-        result.innerHTML=`
-            <div class="result">
-                <div class="emoji">🌸</div>
-                <h2>هااا خوش 😂❤️</h2>
-                <p>تمام ياسچاچة😂 🌷</p>
-                <button class="main-btn" onclick="nextPage(4)">نكمل 🌸</button>
-            </div>
-        `;
-    }else{
-        result.innerHTML=`
-            <div class="result">
-                <div class="emoji">🌷</div>
-                <h2>تمام يابه</h2>
-                <p>براحتچ سچاچة😂🌝</p>
-                <button class="main-btn" onclick="nextPage(4)">نكمل 🌸</button>
-            </div>
-        `;
-    }
+}
+
+
+function answer(choice){
+
+const result = document.getElementById("result");
+
+if(!result){
+return;
+}
+
+result.style.display = "block";
+
+
+if(choice === "yes"){
+
+result.innerHTML = `
+<div class="result">
+<div class="emoji">🌸</div>
+<h2>هااا خوش 😂❤️</h2>
+<p>تمام ياسچاچة😂 🌷</p>
+<button type="button" class="main-btn" onclick="nextPage(4)">نكمل 🌸</button>
+</div>
+`;
+
+}else{
+
+result.innerHTML = `
+<div class="result">
+<div class="emoji">🌷</div>
+<h2>تمام يابه</h2>
+<p>براحتچ سچاچة😂🌝</p>
+<button type="button" class="main-btn" onclick="nextPage(4)">نكمل 🌸</button>
+</div>
+`;
+
+}
+
 }
 </script>
 
