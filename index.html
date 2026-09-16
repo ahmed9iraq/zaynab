@@ -274,41 +274,41 @@ transition:none!important;
 let currentPage=1;
 
 function nextPage(page){
-document.getElementById("page"+currentPage).classList.add("hidden");
-document.getElementById("page"+page).classList.remove("hidden");
-currentPage=page;
-updateDots();
+    document.getElementById("page"+currentPage).classList.add("hidden");
+    document.getElementById("page"+page).classList.remove("hidden");
+    currentPage=page;
+    updateDots();
 }
 
 function updateDots(){
-for(let i=1;i<=4;i++){
-document.getElementById("dot"+i).classList.toggle("active",i===currentPage);
-}
+    for(let i=1;i<=4;i++){
+        document.getElementById("dot"+i).classList.toggle("active",i===currentPage);
+    }
 }
 
 function answer(choice){
-const result=document.getElementById("result");
-result.style.display="block";
+    const result=document.getElementById("result");
+    result.style.display="block";
 
-if(choice==="yes"){
-result.innerHTML=`
-<div class="result">
-<div class="emoji">🌸</div>
-<h2>هااا خوش 😂❤️</h2>
-<p>تمام ياسچاچة😂 🌷</p>
-<button class="main-btn" onclick="nextPage(4)">نكمل 🌸</button>
-</div>
-`;
-}else{
-result.innerHTML=`
-<div class="result">
-<div class="emoji">🌷</div>
-<h2>تمام يابه</h2>
-<p>براحتكي سچاچة😂🌝</p>
-<button class="main-btn" onclick="nextPage(4)">نكمل 🌸</button>
-</div>
-`;
-}
+    if(choice==="yes"){
+        result.innerHTML=`
+            <div class="result">
+                <div class="emoji">🌸</div>
+                <h2>هااا خوش 😂❤️</h2>
+                <p>تمام ياسچاچة😂 🌷</p>
+                <button class="main-btn" onclick="nextPage(4)">نكمل 🌸</button>
+            </div>
+        `;
+    }else{
+        result.innerHTML=`
+            <div class="result">
+                <div class="emoji">🌷</div>
+                <h2>تمام يابه</h2>
+                <p>براحتچ سچاچة😂🌝</p>
+                <button class="main-btn" onclick="nextPage(4)">نكمل 🌸</button>
+            </div>
+        `;
+    }
 }
 </script>
 
