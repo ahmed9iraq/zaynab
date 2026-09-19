@@ -1,87 +1,100 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>رسالة صغيرة</title>
-<style>
-*{box-sizing:border-box;margin:0;padding:0}
-:root{--bg:#080a12;--card:rgba(20,23,38,.8);--text:#f6f3f8;--muted:#aaa9b7;--accent:#e9a8c4;--accent2:#bda7f4}
-body{font-family:Tahoma,Arial,sans-serif;background:radial-gradient(circle at 20% 20%,rgba(189,167,244,.16),transparent 30%),radial-gradient(circle at 80% 75%,rgba(233,168,196,.13),transparent 32%),var(--bg);color:var(--text);min-height:100vh}
-.app{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:18px}
-.card{width:min(560px,100%);min-height:620px;padding:30px 24px 24px;background:var(--card);border:1px solid rgba(255,255,255,.1);border-radius:30px;backdrop-filter:blur(18px);box-shadow:0 25px 80px rgba(0,0,0,.4);display:flex;flex-direction:column;overflow:hidden}
-.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:35px}
-.logo{font-size:13px;color:var(--muted);letter-spacing:1px}
-.progress{display:flex;gap:6px}.dot{width:7px;height:7px;border-radius:50%;background:#414354;transition:.3s}.dot.active{background:var(--accent);width:22px;border-radius:10px}
-.screen{flex:1;display:none;animation:in .5s ease}.screen.active{display:flex;flex-direction:column}
-@keyframes in{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
-.eyebrow{color:var(--accent);font-size:14px;margin-bottom:16px}
-h1{font-size:clamp(30px,7vw,48px);line-height:1.35;margin-bottom:20px}
-h2{font-size:27px;line-height:1.5;margin-bottom:18px}
-p{color:#d4d2da;line-height:2;font-size:16px}
-.quote{margin:28px 0;padding:20px;border-right:3px solid var(--accent);background:rgba(255,255,255,.045);border-radius:15px;color:#eee;line-height:1.9}
-.highlight{color:var(--accent)}
-.space{flex:1}
-.buttons{display:grid;gap:11px;margin-top:25px}
-button{border:0;border-radius:16px;padding:15px 18px;font:inherit;cursor:pointer;transition:.2s}
-.primary{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#15131c;font-weight:bold}
-.secondary{background:rgba(255,255,255,.07);color:var(--text);border:1px solid rgba(255,255,255,.09)}
-button:hover{transform:translateY(-2px)}
-.note,.small{font-size:12px;color:#8e8e9e;text-align:center;margin-top:14px;line-height:1.8}
-.final{text-align:center;align-items:center;justify-content:center}.heart{font-size:42px;margin-bottom:20px}
-@media(max-width:480px){.card{min-height:calc(100vh - 30px);border-radius:25px;padding:27px 20px 20px}.app{padding:15px}}
-</style>
-</head>
-<body>
-<div class="app"><main class="card">
-<div class="top"><div class="logo">رسالة صغيرة 🌙</div><div class="progress"><span class="dot active"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></div></div>
+<p>
+بمادة اسمها تصميم مواقع
+</p>
 
-<section class="screen active">
-<div class="eyebrow">إلى زينب</div>
-<h1>عندي شيء صغير أريد أكوله…</h1>
-<p>مو سؤال دراسي، ومو موضوع يحتاج جواب سريع 😂</p>
-<div class="quote">فقط كم دقيقة من وقتكي، وإذا ما عجبكي الكلام… اعتبريه ما صاير.</div>
-<div class="space"></div><div class="buttons"><button class="primary" onclick="next()">أكمل 🌷</button></div>
-</section>
+<div class="quote">
+🌝
+</div>
 
-<section class="screen">
-<div class="eyebrow">من فترة طويلة</div>
-<h2>أكو شخص صار وجوده مختلف عندي.</h2>
-<p>شخص أرتاح للحكي معانو، وأضحك من أبسط سوالفه، وأحياناً ألقى نفسي أنتظر منه رسالة حتى لو ما عندي شيء مهم أحكي بينو..... ه.</p>
-<div class="quote">والغريب؟ كلما أحاول أتعامل ويا الموضوع بشكل عادي… أكتشف أنه مو عادي بالنسبة إلي.</div>
-<div class="space"></div><div class="buttons"><button class="primary" onclick="next()">بعد شوية… 🌝</button></div>
-</section>
+<button type="button" class="main-btn" onclick="nextPage(1)">
+نرجع للبداية 🌸
+</button>
+</div>
 
-<section class="screen">
-<div class="eyebrow">يمكن عرفتي</div>
-<h2>ما راح أخليكي تخمنين هواية.</h2>
-<p>الشخص اللي أحكي عنه هو <span class="highlight">إنتِ</span>.</p>
-<p style="margin-top:15px">مو لأن لازم يصير بينا شيء، ولا لأن أريد أفرض عليكي جواب… بس لانكي صرتِ شخص مهم عندي، وحبيت أكون صريح بطريقة حلوة.</p>
-<div class="space"></div><div class="buttons"><button class="primary" onclick="next()">أكو شغلة أخيرة 🌷</button></div>
-</section>
 
-<section class="screen">
-<div class="eyebrow">الأهم عندي</div>
-<h2>ما أريد منكي جواب هسه.</h2>
-<p>إذا عدكي نفس الشعور، راح أكون سعيد أعرفه بوقته. وإذا ما عندكي، أحترم هذا الشي وما أريد اخليكي تحسين بأي ضغط أو إحراج.</p>
-<div class="quote">المهم عندي تبقين مرتاحة، وما يتغير احترامنا وكينا بسبب هالرسالة.</div>
-<div class="space"></div><div class="buttons"><button class="primary" onclick="next()">وصلت الفكرة 🤍</button></div>
-</section>
+<div class="progress">
+<div class="dot active" id="dot1"></div>
+<div class="dot" id="dot2"></div>
+<div class="dot" id="dot3"></div>
+<div class="dot" id="dot4"></div>
+</div>
 
-<section class="screen final">
-<div class="heart">🤍</div>
-<h2>وهذا كل اللي أردت أكوله.</h2>
-<p>خذي وقتكي، ولا تحتاجين تجاوبين من خلال الموقع.</p>
-<p class="small">إذا حبيتي تحكين بالموضوع، نحكي بشكل طبيعي… وإذا لا، هم تمام.</p>
-<div class="buttons"><button class="secondary" onclick="restart()">أرجع للبداية</button></div>
-</section>
-</main></div>
+</div>
+
+
 <script>
-let current=0;
-const screens=document.querySelectorAll('.screen'),dots=document.querySelectorAll('.dot');
-function show(){screens.forEach((s,i)=>s.classList.toggle('active',i===current));dots.forEach((d,i)=>d.classList.toggle('active',i===current))}
-function next(){if(current<screens.length-1){current++;show()}}
-function restart(){current=0;show()}
+let currentPage = 1;
+
+function nextPage(page){
+
+const current = document.getElementById("page" + currentPage);
+const next = document.getElementById("page" + page);
+
+if(!current || !next){
+return;
+}
+
+current.classList.add("hidden");
+next.classList.remove("hidden");
+
+currentPage = page;
+
+updateDots();
+}
+
+
+function updateDots(){
+
+for(let i = 1; i <= 4; i++){
+
+const dot = document.getElementById("dot" + i);
+
+if(dot){
+dot.classList.toggle("active", i === currentPage);
+}
+
+}
+
+}
+
+
+function answer(choice){
+
+const result = document.getElementById("result");
+
+if(!result){
+return;
+}
+
+result.style.display = "block";
+
+
+if(choice === "yes"){
+
+result.innerHTML = `
+<div class="result">
+<div class="emoji">🌸</div>
+<h2>هااا خوش 😂❤️</h2>
+<p>تمام ياسچاچة😂 🌷</p>
+<button type="button" class="main-btn" onclick="nextPage(4)">نكمل 🌸</button>
+</div>
+`;
+
+}else{
+
+result.innerHTML = `
+<div class="result">
+<div class="emoji">🌷</div>
+<h2>تمام يابه</h2>
+<p>براحتكي سچاچة😂🌝</p>
+<button type="button" class="main-btn" onclick="nextPage(4)">نكمل 🌸</button>
+</div>
+`;
+
+}
+
+}
 </script>
+
 </body>
 </html>
