@@ -254,7 +254,7 @@ body.scene4-bg .glow.two{background:#a26376;}
     bottom:30px;
     left:50%;
     transform:translateX(-50%);
-    z-index:20;
+    z-index:50;
     border:1px solid rgba(255,255,255,.16);
     background:rgba(255,255,255,.045);
     color:#aaa;
@@ -266,6 +266,7 @@ body.scene4-bg .glow.two{background:#a26376;}
     -webkit-backdrop-filter:blur(15px);
     transition:.45s cubic-bezier(.2,.8,.2,1);
     box-shadow:0 8px 30px rgba(0,0,0,.18);
+    touch-action:manipulation;
 }
 
 .next:before{
@@ -834,9 +835,11 @@ body.scene4-bg .glow.two{background:#a26376;}
 }
 </style>
 </head>
+
 <body class="scene1-bg">
 
 <div id="particles"></div>
+
 <div class="glow one"></div>
 <div class="glow two"></div>
 
@@ -852,12 +855,15 @@ body.scene4-bg .glow.two{background:#a26376;}
     <section class="scene scene-one active">
         <div class="content">
             <div class="moon"></div>
+
             <div class="number">01 / 04</div>
+
             <h1>تره بس إنتِ بالستوري لعلمكي 🙂...</h1>
+
             <div class="sub">
                 لا تستعجلين بالحكم...
                 <br>
-              يجوز أكو سبب ورا هالكلام🤔
+                يجوز أكو سبب ورا هالكلام🤔
             </div>
         </div>
     </section>
@@ -865,9 +871,13 @@ body.scene4-bg .glow.two{background:#a26376;}
     <section class="scene scene-two">
         <div class="content">
             <div class="number">02 / 04</div>
+
             <div class="small">مو كل شيء صدفة</div>
+
             <h2>لأن مو كل شخص أنتظر أشوف أخباره...</h2>
+
             <div class="line"></div>
+
             <p>
                 أكو شخص واحد...
                 <br>
@@ -882,6 +892,7 @@ body.scene4-bg .glow.two{background:#a26376;}
 
     <section class="scene scene-three">
         <div class="content">
+
             <div class="number">03 / 04</div>
 
             <div class="orbit">
@@ -905,11 +916,13 @@ body.scene4-bg .glow.two{background:#a26376;}
             <div class="quiet">
                 وأكو شعور... مو مجرد شقة.
             </div>
+
         </div>
     </section>
 
     <section class="scene scene-four">
         <div class="content">
+
             <div class="number">04 / 04</div>
 
             <div class="scene-four-icon">♡</div>
@@ -931,55 +944,53 @@ body.scene4-bg .glow.two{background:#a26376;}
                 <br>
                 كان إله معنى...
                 <br><br>
-                 انتي،
+                انتي،
                 <br>
                 <span>الوحيدة الي اتمنالها كل الخير Z/A</span>
             </div>
 
             <div class="heart">♡</div>
+
         </div>
     </section>
 
 </div>
 
-<button class="next" id="nextBtn">التالي</button>
+<button class="next" id="nextBtn" type="button">التالي</button>
 
 <script>
-const scenes=document.querySelectorAll(".scene");
-const progress=document.querySelectorAll(".progress span");
-const nextBtn=document.getElementById("nextBtn");
-let current=0;
+(function(){
 
-const bodyClasses=[
-    "scene1-bg",
-    "scene2-bg",
-    "scene3-bg",
-    "scene4-bg"
-];
+    "use strict";
 
-function showScene(index){
-    scenes.forEach((scene,i)=>{
-        scene.classList.toggle("active",i===index);
-    });
+    const scenes = document.querySelectorAll(".scene");
+    const progress = document.querySelectorAll(".progress span");
+    const nextBtn = document.getElementById("nextBtn");
+    const particles = document.getElementById("particles");
 
-    progress.forEach((bar,i)=>{
-        bar.classList.toggle("active",i===index);
-    });
+    let current = 0;
 
-    bodyClasses.forEach(c=>{
-        document.body.classList.remove(c);
-    });
+    const bodyClasses = [
+        "scene1-bg",
+        "scene2-bg",
+        "scene3-bg",
+        "scene4-bg"
+    ];
 
-    document.body.classList.add(bodyClasses[index]);
+    function showScene(index){
 
-    if(index===scenes.length-1){
-        nextBtn.textContent="من البداية";
-    }else{
-        nextBtn.textContent="التالي";
-    }
+        if(index < 0){
+            index = 0;
+        }
 
-    current=index;
-}
+        if(index >= scenes.length){
+            index = scenes.length - 1;
+        }
 
-nextBtn.addEventListener("click",()=>{
-    if(current<scenes.length-1
+        scenes.forEach(function(scene, i){
+
+            if(i === index){
+                scene.classList.add("active");
+            }else{
+                scene.classList.remove("active");
+ 
