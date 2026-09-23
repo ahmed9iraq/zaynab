@@ -1,99 +1,613 @@
-<p>
-بمادة اسمها تصميم مواقع
-</p>
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<div class="quote">
-🌝
+<title>تره بس إنتِ...</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Cairo',sans-serif;
+    background:#000;
+    color:#fff;
+    overflow:hidden;
+    min-height:100vh;
+}
+
+/* =========================
+   الخلفية
+========================= */
+
+.background{
+    position:fixed;
+    inset:0;
+    background:
+        radial-gradient(circle at 50% 45%,rgba(130,90,150,.16),transparent 32%),
+        radial-gradient(circle at 20% 80%,rgba(80,100,160,.10),transparent 30%),
+        #030305;
+}
+
+.stars{
+    position:absolute;
+    inset:0;
+}
+
+.star{
+    position:absolute;
+    width:2px;
+    height:2px;
+    background:white;
+    border-radius:50%;
+    opacity:.25;
+    animation:twinkle 4s infinite ease-in-out;
+}
+
+@keyframes twinkle{
+    0%,100%{
+        opacity:.15;
+        transform:scale(.7);
+    }
+
+    50%{
+        opacity:.9;
+        transform:scale(1.4);
+    }
+}
+
+/* =========================
+   المراحل
+========================= */
+
+.stage{
+    position:fixed;
+    inset:0;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:25px;
+
+    opacity:0;
+    visibility:hidden;
+
+    transition:
+        opacity 1.5s ease,
+        visibility 1.5s ease;
+}
+
+.stage.active{
+    opacity:1;
+    visibility:visible;
+}
+
+/* =========================
+   المرحلة الأولى
+========================= */
+
+.stage1-content{
+    animation:float 5s ease-in-out infinite;
+}
+
+.light{
+    width:4px;
+    height:4px;
+    background:white;
+    border-radius:50%;
+    margin:0 auto 35px;
+
+    box-shadow:
+        0 0 10px rgba(255,255,255,.8),
+        0 0 35px rgba(255,255,255,.5);
+
+    animation:lightPulse 2.5s infinite;
+}
+
+@keyframes lightPulse{
+    0%,100%{
+        transform:scale(.7);
+        opacity:.3;
+    }
+
+    50%{
+        transform:scale(2);
+        opacity:1;
+    }
+}
+
+.stage1-text{
+    font-size:clamp(18px,5vw,25px);
+    font-weight:300;
+    color:#aaa;
+    letter-spacing:2px;
+}
+
+@keyframes float{
+    0%,100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-8px);
+    }
+}
+
+/* =========================
+   المرحلة الثانية
+========================= */
+
+.stage2-content{
+    max-width:700px;
+}
+
+.pre-title{
+    font-size:13px;
+    color:#777;
+    letter-spacing:3px;
+    margin-bottom:30px;
+}
+
+.main-title{
+    font-size:clamp(35px,9vw,65px);
+    line-height:1.5;
+    font-weight:700;
+
+    background:
+        linear-gradient(
+            90deg,
+            #fff,
+            #d7c6df,
+            #fff
+        );
+
+    -webkit-background-clip:text;
+    color:transparent;
+
+    animation:titleGlow 4s infinite;
+}
+
+@keyframes titleGlow{
+    0%,100%{
+        filter:brightness(.8);
+    }
+
+    50%{
+        filter:brightness(1.25);
+    }
+}
+
+.line{
+    width:65px;
+    height:1px;
+    background:rgba(255,255,255,.3);
+    margin:35px auto;
+}
+
+.subtitle{
+    color:#999;
+    font-size:15px;
+    line-height:2;
+}
+
+/* =========================
+   المرحلة الثالثة
+========================= */
+
+.card{
+    width:100%;
+    max-width:650px;
+
+    padding:45px 28px;
+
+    border-radius:30px;
+
+    background:rgba(255,255,255,.025);
+
+    border:
+        1px solid
+        rgba(255,255,255,.08);
+
+    backdrop-filter:blur(20px);
+
+    box-shadow:
+        0 30px 100px rgba(0,0,0,.55);
+}
+
+.card-small{
+    color:#777;
+    font-size:13px;
+    letter-spacing:1px;
+    margin-bottom:25px;
+}
+
+.card-title{
+    font-size:clamp(27px,7vw,43px);
+    line-height:1.6;
+    font-weight:700;
+
+    background:
+        linear-gradient(
+            90deg,
+            #fff,
+            #d9c9df,
+            #fff
+        );
+
+    -webkit-background-clip:text;
+    color:transparent;
+}
+
+.card-line{
+    width:50px;
+    height:1px;
+    background:rgba(255,255,255,.25);
+    margin:25px auto;
+}
+
+.message{
+    color:#bdbdbd;
+    font-size:16px;
+    line-height:2.15;
+}
+
+.highlight{
+    color:#fff;
+    font-weight:600;
+}
+
+.final-message{
+    margin-top:30px;
+
+    color:#8f8f8f;
+
+    font-size:14px;
+
+    line-height:2;
+
+    opacity:0;
+
+    animation:
+        reveal 2s ease 2.5s forwards;
+}
+
+@keyframes reveal{
+    to{
+        opacity:1;
+    }
+}
+
+.heart{
+    margin-top:25px;
+
+    font-size:22px;
+
+    color:#aaa;
+
+    opacity:.5;
+
+    animation:heartPulse 3s infinite;
+}
+
+@keyframes heartPulse{
+    0%,100%{
+        transform:scale(1);
+        opacity:.3;
+    }
+
+    50%{
+        transform:scale(1.2);
+        opacity:.7;
+    }
+}
+
+.signature{
+    margin-top:25px;
+
+    color:#555;
+
+    font-size:11px;
+
+    letter-spacing:2px;
+}
+
+/* =========================
+   زر المتابعة
+========================= */
+
+.continue{
+    position:fixed;
+    bottom:35px;
+    left:50%;
+    transform:translateX(-50%);
+
+    border:0;
+    background:none;
+
+    color:#777;
+
+    font-family:'Cairo';
+
+    font-size:12px;
+
+    cursor:pointer;
+
+    opacity:0;
+
+    transition:.5s;
+}
+
+.continue.show{
+    opacity:1;
+}
+
+.continue:hover{
+    color:white;
+}
+
+/* =========================
+   الهاتف
+========================= */
+
+@media(max-width:500px){
+
+    .card{
+        padding:38px 22px;
+    }
+
+    .message{
+        font-size:15px;
+    }
+
+    .stage{
+        padding:20px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="background">
+    <div class="stars" id="stars"></div>
 </div>
 
-<button type="button" class="main-btn" onclick="nextPage(1)">
-نرجع للبداية 🌸
+
+<!-- =========================
+     المرحلة الأولى
+========================= -->
+
+<section class="stage active" id="stage1">
+
+    <div class="stage1-content">
+
+        <div class="light"></div>
+
+        <div class="stage1-text">
+            نور الموقع...
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     المرحلة الثانية
+========================= -->
+
+<section class="stage" id="stage2">
+
+    <div class="stage2-content">
+
+        <div class="pre-title">
+            ملاحظة صغيرة...
+        </div>
+
+        <div class="main-title">
+            تره بس إنتِ بالستوري...
+        </div>
+
+        <div class="line"></div>
+
+        <div class="subtitle">
+            يمكن الجملة عادية...
+            <br>
+            بس مو كل شخص ينذكر بهالشكل.
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     المرحلة الثالثة
+========================= -->
+
+<section class="stage" id="stage3">
+
+    <div class="card">
+
+        <div class="card-small">
+            والموضوع مو صدفة...
+        </div>
+
+        <div class="card-title">
+            أكو أشخاص...
+            <br>
+            حضورهم يختلف.
+        </div>
+
+        <div class="card-line"></div>
+
+        <div class="message">
+
+            يمكن ما أگولها بشكل مباشر،
+            <br>
+            ويمكن أصلًا ما يحتاج أگولها.
+
+            <br><br>
+
+            بس الغريب إن
+            <span class="highlight">
+                شخص معيّن
+            </span>
+            يقدر يخلي الأشياء العادية
+            إلها معنى ثاني.
+
+            <br><br>
+
+            مو كل ستوري ينشاف وينتظر الواحد رده،
+            <br>
+
+            ومو كل شخص إذا غاب،
+            <br>
+
+            يظل حضوره موجود.
+
+        </div>
+
+        <div class="final-message">
+
+            بعض الأشخاص ما يحتاجون يعرفون
+            مكانتهم...
+
+            <br>
+
+            لأنهم أصلًا يعرفونها.
+
+        </div>
+
+        <div class="heart">
+            ♡
+        </div>
+
+        <div class="signature">
+            يمكن إنتِ تعرفين المقصود...
+        </div>
+
+    </div>
+
+</section>
+
+
+<button class="continue" id="continue">
+    اضغطي للمتابعة
 </button>
-</div>
-
-
-<div class="progress">
-<div class="dot active" id="dot1"></div>
-<div class="dot" id="dot2"></div>
-<div class="dot" id="dot3"></div>
-<div class="dot" id="dot4"></div>
-</div>
-
-</div>
 
 
 <script>
-let currentPage = 1;
 
-function nextPage(page){
+/* =========================
+   النجوم
+========================= */
 
-const current = document.getElementById("page" + currentPage);
-const next = document.getElementById("page" + page);
+const stars = document.getElementById("stars");
 
-if(!current || !next){
-return;
-}
+for(let i = 0; i < 80; i++){
 
-current.classList.add("hidden");
-next.classList.remove("hidden");
+    const star = document.createElement("div");
 
-currentPage = page;
+    star.className = "star";
 
-updateDots();
-}
+    star.style.left =
+        Math.random() * 100 + "%";
 
+    star.style.top =
+        Math.random() * 100 + "%";
 
-function updateDots(){
+    star.style.animationDelay =
+        Math.random() * 5 + "s";
 
-for(let i = 1; i <= 4; i++){
+    star.style.animationDuration =
+        3 + Math.random() * 5 + "s";
 
-const dot = document.getElementById("dot" + i);
-
-if(dot){
-dot.classList.toggle("active", i === currentPage);
-}
-
-}
-
+    stars.appendChild(star);
 }
 
 
-function answer(choice){
+/* =========================
+   المراحل
+========================= */
 
-const result = document.getElementById("result");
+const stages = [
+    document.getElementById("stage1"),
+    document.getElementById("stage2"),
+    document.getElementById("stage3")
+];
 
-if(!result){
-return;
+const button = document.getElementById("continue");
+
+let currentStage = 0;
+
+
+/* المرحلة الأولى */
+
+setTimeout(() => {
+
+    changeStage(1);
+
+}, 3500);
+
+
+/* المرحلة الثانية */
+
+setTimeout(() => {
+
+    changeStage(2);
+
+}, 7500);
+
+
+/* إظهار زر المتابعة */
+
+setTimeout(() => {
+
+    button.classList.add("show");
+
+}, 8000);
+
+
+/* =========================
+   تغيير المرحلة
+========================= */
+
+function changeStage(index){
+
+    stages.forEach(stage => {
+
+        stage.classList.remove("active");
+
+    });
+
+    stages[index].classList.add("active");
+
+    currentStage = index;
 }
 
-result.style.display = "block";
 
+/* =========================
+   زر المتابعة
+========================= */
 
-if(choice === "yes"){
+button.addEventListener("click", () => {
 
-result.innerHTML = `
-<div class="result">
-<div class="emoji">🌸</div>
-<h2>هااا خوش 😂❤️</h2>
-<p>تمام ياسچاچة😂 🌷</p>
-<button type="button" class="main-btn" onclick="nextPage(4)">نكمل 🌸</button>
-</div>
-`;
+    if(currentStage < 2){
 
-}else{
+        changeStage(currentStage + 1);
 
-result.innerHTML = `
-<div class="result">
-<div class="emoji">🌷</div>
-<h2>تمام يابه</h2>
-<p>براحتكي سچاچة😂🌝</p>
-<button type="button" class="main-btn" onclick="nextPage(4)">نكمل 🌸</button>
-</div>
-`;
+    }
 
-}
+});
 
-}
 </script>
 
 </body>
