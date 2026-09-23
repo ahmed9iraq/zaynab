@@ -966,7 +966,10 @@ function showScene(index){
         bar.classList.toggle("active",i===index);
     });
 
-    bodyClasses.forEach(c=>document.body.classList.remove(c));
+    bodyClasses.forEach(c=>{
+        document.body.classList.remove(c);
+    });
+
     document.body.classList.add(bodyClasses[index]);
 
     if(index===scenes.length-1){
@@ -979,5 +982,4 @@ function showScene(index){
 }
 
 nextBtn.addEventListener("click",()=>{
-    if(current<scenes.length-1){
-        showSce
+    if(current<scenes.length-1
