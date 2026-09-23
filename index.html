@@ -2,8 +2,8 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>محتار حيل </title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>صيانة الموقع | أحمد</title>
 
 <style>
 *{
@@ -12,659 +12,206 @@
     box-sizing:border-box;
 }
 
-html,body{
-    width:100%;
-    height:100%;
-    overflow:hidden;
-}
-
 body{
-    font-family:"Segoe UI",Tahoma,Arial,sans-serif;
-    background:#050509;
+    min-height:100vh;
+    background:#05070d;
     color:#fff;
-}
-
-/* إخفاء أزرار التحكم */
-input[type="radio"]{
-    display:none;
-}
-
-/* الخلفيات */
-#s1:checked ~ .page{
-    background:radial-gradient(circle at 50% 45%,#242044 0%,#0d0c19 42%,#020204 100%);
-}
-
-#s2:checked ~ .page{
-    background:radial-gradient(circle at 50% 38%,#38202d 0%,#160c16 43%,#030305 100%);
-}
-
-#s3:checked ~ .page{
-    background:radial-gradient(circle at 50% 45%,#29203a 0%,#100b17 45%,#020204 100%);
-}
-
-#s4:checked ~ .page{
-    background:radial-gradient(circle at 50% 45%,#38242c 0%,#160d12 45%,#040305 100%);
-}
-
-.page{
-    position:fixed;
-    inset:0;
-    overflow:hidden;
-    transition:background 2s ease;
-}
-
-.page:before{
-    content:"";
-    position:fixed;
-    inset:0;
-    pointer-events:none;
-    z-index:10;
-    background:radial-gradient(
-        circle at center,
-        transparent 35%,
-        rgba(0,0,0,.38) 100%
-    );
-}
-
-/* النجوم */
-#particles{
-    position:fixed;
-    inset:0;
-    overflow:hidden;
-    pointer-events:none;
-    z-index:0;
-}
-
-.particle{
-    position:absolute;
-    width:2px;
-    height:2px;
-    border-radius:50%;
-    background:#fff;
-    animation:float 10s linear infinite;
-}
-
-.particle:nth-child(1){left:5%;animation-delay:-2s;}
-.particle:nth-child(2){left:12%;animation-delay:-7s;}
-.particle:nth-child(3){left:19%;animation-delay:-4s;}
-.particle:nth-child(4){left:26%;animation-delay:-9s;}
-.particle:nth-child(5){left:33%;animation-delay:-1s;}
-.particle:nth-child(6){left:40%;animation-delay:-6s;}
-.particle:nth-child(7){left:47%;animation-delay:-3s;}
-.particle:nth-child(8){left:54%;animation-delay:-8s;}
-.particle:nth-child(9){left:61%;animation-delay:-5s;}
-.particle:nth-child(10){left:68%;animation-delay:-10s;}
-.particle:nth-child(11){left:75%;animation-delay:-4s;}
-.particle:nth-child(12){left:82%;animation-delay:-7s;}
-.particle:nth-child(13){left:89%;animation-delay:-2s;}
-.particle:nth-child(14){left:96%;animation-delay:-6s;}
-
-@keyframes float{
-    from{
-        transform:translateY(110vh) scale(.4);
-        opacity:0;
-    }
-    20%{opacity:.5;}
-    70%{opacity:.25;}
-    to{
-        transform:translateY(-10vh) scale(1.4);
-        opacity:0;
-    }
-}
-
-/* الإضاءة */
-.glow{
-    position:fixed;
-    width:480px;
-    height:480px;
-    border-radius:50%;
-    filter:blur(100px);
-    opacity:.2;
-    pointer-events:none;
-    z-index:1;
-    animation:glowMove 8s ease-in-out infinite;
-}
-
-.glow.one{
-    top:-220px;
-    right:-120px;
-    background:#7770d4;
-}
-
-.glow.two{
-    bottom:-250px;
-    left:-140px;
-    background:#625bba;
-    animation-delay:-4s;
-}
-
-@keyframes glowMove{
-    0%,100%{
-        transform:scale(1);
-    }
-    50%{
-        transform:scale(1.16);
-    }
-}
-
-#s2:checked ~ .page .glow.one{
-    background:#d05b91;
-}
-
-#s2:checked ~ .page .glow.two{
-    background:#934867;
-}
-
-#s3:checked ~ .page .glow.one{
-    background:#aa7bd5;
-}
-
-#s3:checked ~ .page .glow.two{
-    background:#76528e;
-}
-
-#s4:checked ~ .page .glow.one{
-    background:#dc8fa4;
-}
-
-#s4:checked ~ .page .glow.two{
-    background:#a26376;
-}
-
-/* المراحل */
-.scenes{
-    position:relative;
-    width:100%;
-    height:100%;
-    z-index:5;
-}
-
-.scene{
-    position:absolute;
-    inset:0;
+    font-family:Tahoma,Arial,sans-serif;
     display:flex;
     align-items:center;
     justify-content:center;
-    padding:30px;
-    opacity:0;
-    visibility:hidden;
-    transform:scale(1.08);
-    filter:blur(8px);
-    transition:
-        opacity 1.2s ease,
-        transform 1.3s cubic-bezier(.2,.75,.2,1),
-        filter 1.1s ease;
-    pointer-events:none;
+    overflow:hidden;
 }
 
-#s1:checked ~ .page .scene-one,
-#s2:checked ~ .page .scene-two,
-#s3:checked ~ .page .scene-three,
-#s4:checked ~ .page .scene-four{
-    opacity:1;
-    visibility:visible;
-    transform:scale(1);
-    filter:blur(0);
-    pointer-events:auto;
+body::before{
+    content:"";
+    position:fixed;
+    width:500px;
+    height:500px;
+    background:radial-gradient(circle,rgba(0,170,255,.12),transparent 70%);
+    top:-180px;
+    right:-150px;
 }
 
-.content{
-    width:min(720px,92vw);
+body::after{
+    content:"";
+    position:fixed;
+    width:500px;
+    height:500px;
+    background:radial-gradient(circle,rgba(100,50,255,.10),transparent 70%);
+    bottom:-200px;
+    left:-150px;
+}
+
+.container{
+    width:90%;
+    max-width:650px;
     text-align:center;
+    position:relative;
+    z-index:2;
+    padding:45px 30px;
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:28px;
+    background:rgba(255,255,255,.025);
+    backdrop-filter:blur(18px);
+    box-shadow:0 25px 80px rgba(0,0,0,.5);
+}
+
+.icon{
+    width:90px;
+    height:90px;
+    margin:0 auto 30px;
+    border-radius:50%;
+    border:2px solid rgba(0,190,255,.35);
+    display:flex;
+    align-items:center;
+    justify-content:center;
     position:relative;
 }
 
-.number{
-    font-size:11px;
-    letter-spacing:5px;
-    color:#8b8592;
-    margin-bottom:25px;
-    opacity:.8;
+.icon::before{
+    content:"";
+    position:absolute;
+    width:110px;
+    height:110px;
+    border:1px solid rgba(0,190,255,.12);
+    border-radius:50%;
+    animation:pulse 2s infinite;
 }
 
-.scene h1,
-.scene h2{
-    font-weight:500;
-    line-height:1.7;
+.icon span{
+    font-size:40px;
+    animation:gear 4s linear infinite;
 }
 
-.scene p{
-    line-height:2.2;
+h1{
+    font-size:30px;
+    margin-bottom:15px;
+    letter-spacing:.5px;
 }
 
-/* شريط التقدم */
+.subtitle{
+    color:#aeb7c6;
+    font-size:16px;
+    line-height:2;
+    margin-bottom:30px;
+}
+
+.highlight{
+    color:#00bfff;
+    font-weight:bold;
+}
+
 .progress{
-    position:fixed;
-    top:25px;
-    left:50%;
-    transform:translateX(-50%);
-    display:flex;
-    gap:7px;
-    z-index:30;
+    width:100%;
+    height:6px;
+    background:rgba(255,255,255,.07);
+    border-radius:20px;
+    overflow:hidden;
+    margin:25px 0 12px;
 }
 
 .progress span{
-    width:35px;
-    height:2px;
-    background:rgba(255,255,255,.13);
-    transition:.8s ease;
-}
-
-#s1:checked ~ .page .progress span:nth-child(1),
-#s2:checked ~ .page .progress span:nth-child(2),
-#s3:checked ~ .page .progress span:nth-child(3),
-#s4:checked ~ .page .progress span:nth-child(4){
-    background:#fff;
-    box-shadow:0 0 12px rgba(255,255,255,.5);
-}
-
-/* الأزرار */
-.nav{
-    position:fixed;
-    bottom:30px;
-    left:50%;
-    transform:translateX(-50%);
-    z-index:40;
-}
-
-.nav label{
-    display:none;
-    border:1px solid rgba(255,255,255,.16);
-    background:rgba(255,255,255,.045);
-    color:#aaa;
-    padding:11px 28px;
-    border-radius:30px;
-    font-family:inherit;
-    cursor:pointer;
-    backdrop-filter:blur(15px);
-    -webkit-backdrop-filter:blur(15px);
-    transition:.45s ease;
-    box-shadow:0 8px 30px rgba(0,0,0,.18);
-    user-select:none;
-}
-
-.nav label:hover{
-    color:#fff;
-    border-color:rgba(255,255,255,.35);
-    background:rgba(255,255,255,.09);
-    transform:translateY(-4px);
-    box-shadow:0 12px 35px rgba(0,0,0,.28);
-}
-
-#s1:checked ~ .page .next1,
-#s2:checked ~ .page .next2,
-#s3:checked ~ .page .next3,
-#s4:checked ~ .page .next4{
     display:block;
-}
-
-/* المرحلة الأولى */
-.scene-one .moon{
-    width:115px;
-    height:115px;
-    border-radius:50%;
-    margin:0 auto 35px;
-    background:
-        radial-gradient(
-            circle at 35% 30%,
-            #fff,
-            #d9d4e8 35%,
-            #88829b 75%,
-            #3e3a4c 100%
-        );
-    box-shadow:
-        0 0 50px rgba(190,184,225,.22),
-        0 0 110px rgba(137,126,194,.15),
-        0 0 170px rgba(137,126,194,.07);
-    position:relative;
-    animation:moonFloat 5s ease-in-out infinite;
-}
-
-.scene-one .moon:before{
-    content:"";
-    position:absolute;
-    inset:-18px;
-    border:1px solid rgba(210,205,235,.08);
-    border-radius:50%;
-    animation:moonRing 8s linear infinite;
-}
-
-.scene-one .moon:after{
-    content:"";
-    position:absolute;
-    width:100%;
+    width:70%;
     height:100%;
-    border-radius:50%;
-    background:rgba(0,0,0,.08);
+    border-radius:20px;
+    background:linear-gradient(90deg,#0077ff,#00d9ff);
+    animation:loading 2.5s ease-in-out infinite;
 }
 
-@keyframes moonFloat{
-    0%,100%{
-        transform:translateY(0);
-    }
-    50%{
-        transform:translateY(-9px);
-    }
-}
-
-@keyframes moonRing{
-    from{transform:rotate(0deg) scale(.95);}
-    to{transform:rotate(360deg) scale(1.05);}
-}
-
-.scene-one h1{
-    font-size:clamp(31px,7vw,55px);
-    background:linear-gradient(90deg,#fff,#c8c2dd,#fff);
-    background-size:200% auto;
-    -webkit-background-clip:text;
-    color:transparent;
-    animation:titleShine 5s linear infinite;
-}
-
-@keyframes titleShine{
-    from{background-position:200% center;}
-    to{background-position:-200% center;}
-}
-
-.scene-one .sub{
-    margin-top:18px;
-    color:#8e8995;
-    font-size:15px;
-    line-height:2;
-}
-
-/* المرحلة الثانية */
-.scene-two .content{
-    padding:55px 30px;
-    border:1px solid rgba(210,125,157,.16);
-    border-radius:35px;
-    background:
-        linear-gradient(
-            145deg,
-            rgba(255,255,255,.055),
-            rgba(255,255,255,.012)
-        );
-    box-shadow:
-        0 25px 100px rgba(0,0,0,.45),
-        inset 0 0 60px rgba(192,83,123,.04),
-        0 0 80px rgba(190,80,125,.05);
-    backdrop-filter:blur(18px);
-    -webkit-backdrop-filter:blur(18px);
-    animation:cardFloat 6s ease-in-out infinite;
-}
-
-@keyframes cardFloat{
-    0%,100%{transform:translateY(0);}
-    50%{transform:translateY(-6px);}
-}
-
-.scene-two .small{
-    color:#b87591;
+.status{
+    color:#7f8b9c;
     font-size:13px;
-    letter-spacing:3px;
-    margin-bottom:25px;
 }
 
-.scene-two h2{
-    font-size:clamp(28px,6vw,47px);
-    color:#eee;
-}
-
-.scene-two .line{
-    width:45px;
+.divider{
+    width:60px;
     height:1px;
-    background:#a86b82;
-    margin:28px auto;
-    box-shadow:0 0 15px #a86b82;
+    background:rgba(255,255,255,.15);
+    margin:30px auto;
 }
 
-.scene-two p{
-    color:#aaa3ad;
-    font-size:16px;
+.maintainer{
+    color:#8e99aa;
+    font-size:14px;
 }
 
-.scene-two strong{
-    color:#e0a4b9;
-    font-weight:500;
+.maintainer strong{
+    color:#fff;
 }
 
-/* المرحلة الثالثة */
-.scene-three .content{
-    padding:20px;
+.footer{
+    margin-top:25px;
+    color:#566172;
+    font-size:11px;
+    letter-spacing:1px;
 }
 
-.scene-three .orbit{
-    width:180px;
-    height:180px;
-    border:1px solid rgba(174,143,204,.18);
-    border-radius:50%;
-    margin:0 auto 40px;
-    position:relative;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    box-shadow:0 0 70px rgba(144,106,177,.08);
-    animation:orbitFloat 5s ease-in-out infinite;
+.dots span{
+    animation:dots 1.5s infinite;
 }
 
-.scene-three .orbit:before,
-.scene-three .orbit:after{
-    content:"";
-    position:absolute;
-    border-radius:50%;
-    border:1px solid rgba(174,143,204,.12);
+.dots span:nth-child(2){
+    animation-delay:.2s;
 }
 
-.scene-three .orbit:before{
-    width:240px;
-    height:90px;
-    animation:orbitRotate 9s linear infinite;
+.dots span:nth-child(3){
+    animation-delay:.4s;
 }
 
-.scene-three .orbit:after{
-    width:90px;
-    height:240px;
-    animation:orbitRotateReverse 11s linear infinite;
-}
-
-@keyframes orbitFloat{
-    0%,100%{transform:translateY(0);}
-    50%{transform:translateY(-7px);}
-}
-
-@keyframes orbitRotate{
-    from{transform:rotate(25deg);}
-    to{transform:rotate(385deg);}
-}
-
-@keyframes orbitRotateReverse{
-    from{transform:rotate(25deg);}
-    to{transform:rotate(-335deg);}
-}
-
-.scene-three .core{
-    width:14px;
-    height:14px;
-    border-radius:50%;
-    background:#eee5f5;
-    box-shadow:
-        0 0 25px 8px rgba(190,165,215,.25),
-        0 0 55px 15px rgba(160,125,190,.1);
-    animation:pulse 3s ease-in-out infinite;
+@keyframes gear{
+    from{
+        transform:rotate(0deg);
+    }
+    to{
+        transform:rotate(360deg);
+    }
 }
 
 @keyframes pulse{
     0%,100%{
-        transform:scale(.8);
-        opacity:.6;
+        transform:scale(.9);
+        opacity:.3;
     }
     50%{
-        transform:scale(1.3);
+        transform:scale(1.1);
+        opacity:.8;
+    }
+}
+
+@keyframes loading{
+    0%{
+        transform:translateX(110%);
+    }
+    50%{
+        transform:translateX(0);
+    }
+    100%{
+        transform:translateX(-110%);
+    }
+}
+
+@keyframes dots{
+    0%,60%,100%{
+        opacity:.2;
+    }
+    30%{
         opacity:1;
     }
 }
 
-.scene-three h2{
-    font-size:clamp(27px,6vw,45px);
-    color:#eee;
-}
-
-.scene-three .text{
-    margin-top:24px;
-    color:#aaa3ad;
-    font-size:16px;
-    line-height:2.5;
-}
-
-.scene-three .highlight{
-    color:#e4d8ec;
-    text-shadow:0 0 18px rgba(220,200,235,.12);
-}
-
-.scene-three .quiet{
-    margin-top:25px;
-    color:#706a74;
-    font-size:13px;
-}
-
-/* المرحلة الرابعة */
-.scene-four .content{
-    padding:55px 30px;
-    border-radius:40px;
-    background:
-        linear-gradient(
-            145deg,
-            rgba(255,255,255,.05),
-            rgba(255,255,255,.008)
-        );
-    border:1px solid rgba(220,170,181,.15);
-    box-shadow:
-        0 25px 100px rgba(0,0,0,.5),
-        0 0 80px rgba(190,110,130,.06),
-        inset 0 0 70px rgba(220,140,160,.025);
-    backdrop-filter:blur(18px);
-    -webkit-backdrop-filter:blur(18px);
-    animation:finalFloat 7s ease-in-out infinite;
-}
-
-@keyframes finalFloat{
-    0%,100%{transform:translateY(0);}
-    50%{transform:translateY(-5px);}
-}
-
-.scene-four-icon{
-    width:70px;
-    height:70px;
-    border:1px solid rgba(226,171,184,.2);
-    border-radius:50%;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    margin:0 auto 25px;
-    font-size:28px;
-    color:#d7a5b1;
-    animation:heartbeat 3s ease-in-out infinite;
-}
-
-@keyframes heartbeat{
-    0%,100%{
-        transform:scale(1);
-    }
-    50%{
-        transform:scale(1.08);
-    }
-}
-
-.scene-four h2{
-    font-size:clamp(30px,7vw,48px);
-    background:linear-gradient(90deg,#fff,#e5bdc7,#fff);
-    background-size:200% auto;
-    -webkit-background-clip:text;
-    color:transparent;
-    animation:titleShine 6s linear infinite;
-}
-
-.scene-four .message{
-    margin-top:28px;
-    color:#b0a8af;
-    font-size:17px;
-    line-height:2.5;
-}
-
-.scene-four .final{
-    margin-top:32px;
-    color:#817981;
-    font-size:13px;
-    line-height:2.3;
-}
-
-.scene-four .final span{
-    color:#ddd;
-    text-shadow:0 0 20px rgba(255,220,230,.12);
-}
-
-.scene-four .heart{
-    margin-top:25px;
-    font-size:20px;
-    color:#c88b9d;
-    opacity:.65;
-    animation:heartbeat 3s ease-in-out infinite;
-}
-
-/* دخول النصوص */
-#s1:checked ~ .page .scene-one .content,
-#s2:checked ~ .page .scene-two .content,
-#s3:checked ~ .page .scene-three .content,
-#s4:checked ~ .page .scene-four .content{
-    animation:fadeUp 1s ease both;
-}
-
-@keyframes fadeUp{
-    from{
-        opacity:0;
-        transform:translateY(22px);
-        filter:blur(5px);
-    }
-    to{
-        opacity:1;
-        transform:translateY(0);
-        filter:blur(0);
-    }
-}
-
-/* الهاتف */
-@media(max-width:600px){
-
-    .scene{
-        padding:20px;
-    }
-
-    .scene-two .content,
-    .scene-four .content{
+@media(max-width:500px){
+    .container{
         padding:40px 22px;
     }
 
-    .scene-three .orbit{
-        width:145px;
-        height:145px;
+    h1{
+        font-size:24px;
     }
 
-    .scene-three .orbit:before{
-        width:200px;
-        height:70px;
-    }
-
-    .scene-three .orbit:after{
-        width:70px;
-        height:200px;
-    }
-
-    .progress span{
-        width:27px;
-    }
-
-    .nav label{
-        padding:10px 24px;
+    .subtitle{
+        font-size:14px;
     }
 }
 </style>
@@ -672,178 +219,42 @@ input[type="radio"]{
 
 <body>
 
-<!-- مفاتيح المراحل -->
-<input type="radio" name="scene" id="s1" checked>
-<input type="radio" name="scene" id="s2">
-<input type="radio" name="scene" id="s3">
-<input type="radio" name="scene" id="s4">
+<div class="container">
 
-<div class="page">
-
-    <div id="particles">
-        <span class="particle"></span>
-        <span class="particle"></span>
-        <span class="particle"></span>
-        <span class="particle"></span>
-        <span class="particle"></span>
-        <span class="particle"></span>
-        <span class="particle"></span>
-        <span class="particle"></span>
-        <span class="particle"></span>
-        <span class="particle"></span>
-        <span class="particle"></span>
-        <span class="particle"></span>
-        <span class="particle"></span>
-        <span class="particle"></span>
+    <div class="icon">
+        <span>⚙</span>
     </div>
 
-    <div class="glow one"></div>
-    <div class="glow two"></div>
+    <h1>الموقع قيد الصيانة</h1>
+
+    <div class="subtitle">
+        حالياً الموقع تحت الصيانه Z🌝
+        <br>
+        بس يمكن لو ادزلكي الموقع لو لا حسب يا Z
+    </div>
 
     <div class="progress">
         <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
     </div>
 
-    <div class="scenes">
-
-        <!-- المرحلة الأولى -->
-        <section class="scene scene-one">
-            <div class="content">
-
-                <div class="moon"></div>
-
-                <div class="number">01 / 04</div>
-
-                <h1>تره بس إنتِ تكدرين اتشوفين الستوري  ...</h1>
-
-                <div class="sub">
-                    لا تستعجلين بالحكم...
-                    <br>
-                    يجوز أكو سبب ورا هالكلام🤔
-                </div>
-
-            </div>
-        </section>
-
-
-        <!-- المرحلة الثانية -->
-        <section class="scene scene-two">
-            <div class="content">
-
-                <div class="number">02 / 04</div>
-
-                <div class="small">مو كل شيء صدفة</div>
-
-                <h2>لأن مو كل شخص أنتظر أشوف أخباره...</h2>
-
-                <div class="line"></div>
-
-                <p>
-                    أكو شخص واحد...
-                    <br>
-                    حتى لو ما حچيت وياه،
-                    <br>
-                    يبقى عندك فضول تعرف شلون صار يومه.
-                    <br><br>
-                    <strong>وجوده أحيانًا يغير مزاج اليوم كله.</strong>
-                </p>
-
-            </div>
-        </section>
-
-
-        <!-- المرحلة الثالثة -->
-        <section class="scene scene-three">
-            <div class="content">
-
-                <div class="number">03 / 04</div>
-
-                <div class="orbit">
-                    <div class="core"></div>
-                </div>
-
-                <h2>يمكن تعرفين منو المقصودة...</h2>
-
-                <div class="text">
-                    إذا شفتي نفسك المقصودة...
-                    <br>
-                    <span class="highlight">لا، مو صدفة.</span>
-                    <br><br>
-                    يمكن مرات اشاقة،
-                    <br>
-                    بس الحقيقة إن وجودكي
-                    <br>
-                    <span class="highlight">مو عادي بالنسبة إلي.</span>
-                </div>
-
-                <div class="quiet">
-                    وأكو شعور... مو مجرد شقة.
-                </div>
-
-            </div>
-        </section>
-
-
-        <!-- المرحلة الرابعة -->
-        <section class="scene scene-four">
-            <div class="content">
-
-                <div class="number">04 / 04</div>
-
-                <div class="scene-four-icon">♡</div>
-
-                <h2>وبالمناسبة...</h2>
-
-                <div class="message">
-                    اشونكي؟
-                    <br>
-                    اخباركي؟
-                    <br><br>
-                    إن شاء الله طول عمركي
-                    <br>
-                    تبقين زينة وبأحسن حال.
-                </div>
-
-                <div class="final">
-                    يمكن كل الكلام اللي قبل
-                    <br>
-                    كان إله معنى...
-                    <br><br>
-                    انتي،
-                    <br>
-                    <span>الوحيدة الي اتمنالها كل الخير Z/A</span>
-                </div>
-
-                <div class="heart">♡</div>
-
-            </div>
-        </section>
-
+    <div class="status">
+        جارٍ تنفيذ التحديثات
+        <span class="dots">
+            <span>.</span>
+            <span>.</span>
+            <span>.</span>
+        </span>
     </div>
 
+    <div class="divider"></div>
 
-    <!-- أزرار الانتقال -->
-    <div class="nav">
+    <div class="maintainer">
+        تتم صيانة وتطوير الموقع بواسطة
+        <strong>أحمد</strong>
+    </div>
 
-        <label for="s2" class="next1">
-            التالي
-        </label>
-
-        <label for="s3" class="next2">
-            التالي
-        </label>
-
-        <label for="s4" class="next3">
-            التالي
-        </label>
-
-        <label for="s1" class="next4">
-            من البداية
-        </label>
-
+    <div class="footer">
+        SYSTEM MAINTENANCE • AHMED DEVELOPMENT
     </div>
 
 </div>
