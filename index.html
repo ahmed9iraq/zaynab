@@ -4,42 +4,74 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>محتار حيل </title>
+
 <style>
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
 }
+
 html,body{
     width:100%;
     height:100%;
     overflow:hidden;
 }
+
 body{
     font-family:"Segoe UI",Tahoma,Arial,sans-serif;
     background:#050509;
     color:#fff;
-    transition:background 2.2s ease;
 }
-body.scene1-bg{background:radial-gradient(circle at 50% 45%,#242044 0%,#0d0c19 42%,#020204 100%);}
-body.scene2-bg{background:radial-gradient(circle at 50% 38%,#38202d 0%,#160c16 43%,#030305 100%);}
-body.scene3-bg{background:radial-gradient(circle at 50% 45%,#29203a 0%,#100b17 45%,#020204 100%);}
-body.scene4-bg{background:radial-gradient(circle at 50% 45%,#38242c 0%,#160d12 45%,#040305 100%);}
 
-body:before{
+/* إخفاء أزرار التحكم */
+input[type="radio"]{
+    display:none;
+}
+
+/* الخلفيات */
+#s1:checked ~ .page{
+    background:radial-gradient(circle at 50% 45%,#242044 0%,#0d0c19 42%,#020204 100%);
+}
+
+#s2:checked ~ .page{
+    background:radial-gradient(circle at 50% 38%,#38202d 0%,#160c16 43%,#030305 100%);
+}
+
+#s3:checked ~ .page{
+    background:radial-gradient(circle at 50% 45%,#29203a 0%,#100b17 45%,#020204 100%);
+}
+
+#s4:checked ~ .page{
+    background:radial-gradient(circle at 50% 45%,#38242c 0%,#160d12 45%,#040305 100%);
+}
+
+.page{
+    position:fixed;
+    inset:0;
+    overflow:hidden;
+    transition:background 2s ease;
+}
+
+.page:before{
     content:"";
     position:fixed;
     inset:0;
     pointer-events:none;
-    z-index:1;
-    background:radial-gradient(circle at center,transparent 35%,rgba(0,0,0,.38) 100%);
+    z-index:10;
+    background:radial-gradient(
+        circle at center,
+        transparent 35%,
+        rgba(0,0,0,.38) 100%
+    );
 }
 
+/* النجوم */
 #particles{
     position:fixed;
     inset:0;
-    pointer-events:none;
     overflow:hidden;
+    pointer-events:none;
     z-index:0;
 }
 
@@ -49,48 +81,38 @@ body:before{
     height:2px;
     border-radius:50%;
     background:#fff;
-    opacity:.25;
-    animation:float linear infinite;
+    animation:float 10s linear infinite;
 }
 
-.particle:nth-child(3n){
-    width:3px;
-    height:3px;
-    box-shadow:0 0 8px rgba(255,255,255,.6);
-}
-
-.particle:nth-child(4n){
-    animation-name:floatSide;
-}
+.particle:nth-child(1){left:5%;animation-delay:-2s;}
+.particle:nth-child(2){left:12%;animation-delay:-7s;}
+.particle:nth-child(3){left:19%;animation-delay:-4s;}
+.particle:nth-child(4){left:26%;animation-delay:-9s;}
+.particle:nth-child(5){left:33%;animation-delay:-1s;}
+.particle:nth-child(6){left:40%;animation-delay:-6s;}
+.particle:nth-child(7){left:47%;animation-delay:-3s;}
+.particle:nth-child(8){left:54%;animation-delay:-8s;}
+.particle:nth-child(9){left:61%;animation-delay:-5s;}
+.particle:nth-child(10){left:68%;animation-delay:-10s;}
+.particle:nth-child(11){left:75%;animation-delay:-4s;}
+.particle:nth-child(12){left:82%;animation-delay:-7s;}
+.particle:nth-child(13){left:89%;animation-delay:-2s;}
+.particle:nth-child(14){left:96%;animation-delay:-6s;}
 
 @keyframes float{
     from{
         transform:translateY(110vh) scale(.4);
         opacity:0;
     }
-    15%{opacity:.5;}
-    75%{opacity:.28;}
+    20%{opacity:.5;}
+    70%{opacity:.25;}
     to{
         transform:translateY(-10vh) scale(1.4);
         opacity:0;
     }
 }
 
-@keyframes floatSide{
-    from{
-        transform:translate(0,110vh) scale(.5);
-        opacity:0;
-    }
-    25%{opacity:.45;}
-    50%{
-        transform:translate(35px,55vh) scale(1);
-    }
-    100%{
-        transform:translate(-25px,-10vh) scale(1.3);
-        opacity:0;
-    }
-}
-
+/* الإضاءة */
 .glow{
     position:fixed;
     width:480px;
@@ -99,21 +121,20 @@ body:before{
     filter:blur(100px);
     opacity:.2;
     pointer-events:none;
-    transition:all 2.4s ease;
-    z-index:0;
+    z-index:1;
     animation:glowMove 8s ease-in-out infinite;
 }
 
 .glow.one{
     top:-220px;
     right:-120px;
-    background:#7c6bff;
+    background:#7770d4;
 }
 
 .glow.two{
     bottom:-250px;
     left:-140px;
-    background:#d26b9b;
+    background:#625bba;
     animation-delay:-4s;
 }
 
@@ -126,20 +147,36 @@ body:before{
     }
 }
 
-body.scene1-bg .glow.one{background:#7770d4;}
-body.scene1-bg .glow.two{background:#625bba;}
-body.scene2-bg .glow.one{background:#d05b91;}
-body.scene2-bg .glow.two{background:#934867;}
-body.scene3-bg .glow.one{background:#aa7bd5;}
-body.scene3-bg .glow.two{background:#76528e;}
-body.scene4-bg .glow.one{background:#dc8fa4;}
-body.scene4-bg .glow.two{background:#a26376;}
+#s2:checked ~ .page .glow.one{
+    background:#d05b91;
+}
 
-.wrapper{
+#s2:checked ~ .page .glow.two{
+    background:#934867;
+}
+
+#s3:checked ~ .page .glow.one{
+    background:#aa7bd5;
+}
+
+#s3:checked ~ .page .glow.two{
+    background:#76528e;
+}
+
+#s4:checked ~ .page .glow.one{
+    background:#dc8fa4;
+}
+
+#s4:checked ~ .page .glow.two{
+    background:#a26376;
+}
+
+/* المراحل */
+.scenes{
     position:relative;
     width:100%;
     height:100%;
-    z-index:2;
+    z-index:5;
 }
 
 .scene{
@@ -154,21 +191,21 @@ body.scene4-bg .glow.two{background:#a26376;}
     transform:scale(1.08);
     filter:blur(8px);
     transition:
-        opacity 1.25s ease,
-        transform 1.35s cubic-bezier(.2,.75,.2,1),
-        filter 1.1s ease,
-        visibility 1.25s;
+        opacity 1.2s ease,
+        transform 1.3s cubic-bezier(.2,.75,.2,1),
+        filter 1.1s ease;
+    pointer-events:none;
 }
 
-.scene.active{
+#s1:checked ~ .page .scene-one,
+#s2:checked ~ .page .scene-two,
+#s3:checked ~ .page .scene-three,
+#s4:checked ~ .page .scene-four{
     opacity:1;
     visibility:visible;
     transform:scale(1);
     filter:blur(0);
-}
-
-.scene:not(.active){
-    pointer-events:none;
+    pointer-events:auto;
 }
 
 .content{
@@ -183,27 +220,10 @@ body.scene4-bg .glow.two{background:#a26376;}
     color:#8b8592;
     margin-bottom:25px;
     opacity:.8;
-    transition:.8s ease;
 }
 
-.scene.active .number{
-    animation:numberReveal 1s ease both;
-}
-
-@keyframes numberReveal{
-    from{
-        opacity:0;
-        letter-spacing:14px;
-        transform:translateY(-10px);
-    }
-    to{
-        opacity:.8;
-        letter-spacing:5px;
-        transform:translateY(0);
-    }
-}
-
-.scene h1,.scene h2{
+.scene h1,
+.scene h2{
     font-weight:500;
     line-height:1.7;
 }
@@ -212,6 +232,7 @@ body.scene4-bg .glow.two{background:#a26376;}
     line-height:2.2;
 }
 
+/* شريط التقدم */
 .progress{
     position:fixed;
     top:25px;
@@ -219,42 +240,35 @@ body.scene4-bg .glow.two{background:#a26376;}
     transform:translateX(-50%);
     display:flex;
     gap:7px;
-    z-index:20;
+    z-index:30;
 }
 
 .progress span{
     width:35px;
     height:2px;
     background:rgba(255,255,255,.13);
-    transition:all .8s cubic-bezier(.2,.8,.2,1);
-    position:relative;
-    overflow:hidden;
+    transition:.8s ease;
 }
 
-.progress span.active{
-    background:#eee;
+#s1:checked ~ .page .progress span:nth-child(1),
+#s2:checked ~ .page .progress span:nth-child(2),
+#s3:checked ~ .page .progress span:nth-child(3),
+#s4:checked ~ .page .progress span:nth-child(4){
+    background:#fff;
     box-shadow:0 0 12px rgba(255,255,255,.5);
 }
 
-.progress span.active:after{
-    content:"";
-    position:absolute;
-    inset:0;
-    background:#fff;
-    transform:translateX(-100%);
-    animation:progressGlow 1.2s ease forwards;
-}
-
-@keyframes progressGlow{
-    to{transform:translateX(0);}
-}
-
-.next{
+/* الأزرار */
+.nav{
     position:fixed;
     bottom:30px;
     left:50%;
     transform:translateX(-50%);
-    z-index:50;
+    z-index:40;
+}
+
+.nav label{
+    display:none;
     border:1px solid rgba(255,255,255,.16);
     background:rgba(255,255,255,.045);
     color:#aaa;
@@ -264,49 +278,40 @@ body.scene4-bg .glow.two{background:#a26376;}
     cursor:pointer;
     backdrop-filter:blur(15px);
     -webkit-backdrop-filter:blur(15px);
-    transition:.45s cubic-bezier(.2,.8,.2,1);
+    transition:.45s ease;
     box-shadow:0 8px 30px rgba(0,0,0,.18);
-    touch-action:manipulation;
+    user-select:none;
 }
 
-.next:before{
-    content:"";
-    position:absolute;
-    inset:-1px;
-    border-radius:30px;
-    background:linear-gradient(90deg,transparent,rgba(255,255,255,.16),transparent);
-    transform:translateX(-100%);
-    transition:.7s ease;
-    z-index:-1;
-}
-
-.next:hover{
+.nav label:hover{
     color:#fff;
     border-color:rgba(255,255,255,.35);
     background:rgba(255,255,255,.09);
-    transform:translateX(-50%) translateY(-4px);
+    transform:translateY(-4px);
     box-shadow:0 12px 35px rgba(0,0,0,.28);
 }
 
-.next:hover:before{
-    transform:translateX(100%);
-}
-
-.next:active{
-    transform:translateX(-50%) translateY(-1px) scale(.96);
+#s1:checked ~ .page .next1,
+#s2:checked ~ .page .next2,
+#s3:checked ~ .page .next3,
+#s4:checked ~ .page .next4{
+    display:block;
 }
 
 /* المرحلة الأولى */
-.scene-one .content{
-    animation:sceneOneGlow 5s ease-in-out infinite;
-}
-
 .scene-one .moon{
     width:115px;
     height:115px;
     border-radius:50%;
     margin:0 auto 35px;
-    background:radial-gradient(circle at 35% 30%,#fff,#d9d4e8 35%,#88829b 75%,#3e3a4c 100%);
+    background:
+        radial-gradient(
+            circle at 35% 30%,
+            #fff,
+            #d9d4e8 35%,
+            #88829b 75%,
+            #3e3a4c 100%
+        );
     box-shadow:
         0 0 50px rgba(190,184,225,.22),
         0 0 110px rgba(137,126,194,.15),
@@ -336,17 +341,9 @@ body.scene4-bg .glow.two{background:#a26376;}
 @keyframes moonFloat{
     0%,100%{
         transform:translateY(0);
-        box-shadow:
-            0 0 50px rgba(190,184,225,.22),
-            0 0 110px rgba(137,126,194,.15),
-            0 0 170px rgba(137,126,194,.07);
     }
     50%{
         transform:translateY(-9px);
-        box-shadow:
-            0 0 65px rgba(190,184,225,.28),
-            0 0 135px rgba(137,126,194,.2),
-            0 0 190px rgba(137,126,194,.1);
     }
 }
 
@@ -373,20 +370,7 @@ body.scene4-bg .glow.two{background:#a26376;}
     margin-top:18px;
     color:#8e8995;
     font-size:15px;
-    opacity:0;
-    transform:translateY(15px);
-    transition:1.3s ease;
-}
-
-.scene-one.active .sub{
-    opacity:1;
-    transform:translateY(0);
-    transition-delay:1s;
-}
-
-@keyframes sceneOneGlow{
-    0%,100%{filter:brightness(1);}
-    50%{filter:brightness(1.08);}
+    line-height:2;
 }
 
 /* المرحلة الثانية */
@@ -394,32 +378,24 @@ body.scene4-bg .glow.two{background:#a26376;}
     padding:55px 30px;
     border:1px solid rgba(210,125,157,.16);
     border-radius:35px;
-    background:linear-gradient(145deg,rgba(255,255,255,.055),rgba(255,255,255,.012));
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.055),
+            rgba(255,255,255,.012)
+        );
     box-shadow:
         0 25px 100px rgba(0,0,0,.45),
         inset 0 0 60px rgba(192,83,123,.04),
         0 0 80px rgba(190,80,125,.05);
     backdrop-filter:blur(18px);
     -webkit-backdrop-filter:blur(18px);
-    overflow:hidden;
+    animation:cardFloat 6s ease-in-out infinite;
 }
 
-.scene-two .content:after{
-    content:"";
-    position:absolute;
-    width:180px;
-    height:180px;
-    border-radius:50%;
-    background:rgba(205,95,139,.08);
-    filter:blur(50px);
-    top:-100px;
-    left:-80px;
-    animation:pinkLight 5s ease-in-out infinite;
-}
-
-@keyframes pinkLight{
-    0%,100%{transform:translate(0,0);}
-    50%{transform:translate(100px,70px);}
+@keyframes cardFloat{
+    0%,100%{transform:translateY(0);}
+    50%{transform:translateY(-6px);}
 }
 
 .scene-two .small{
@@ -427,15 +403,11 @@ body.scene4-bg .glow.two{background:#a26376;}
     font-size:13px;
     letter-spacing:3px;
     margin-bottom:25px;
-    position:relative;
-    z-index:2;
 }
 
 .scene-two h2{
     font-size:clamp(28px,6vw,47px);
     color:#eee;
-    position:relative;
-    z-index:2;
 }
 
 .scene-two .line{
@@ -444,47 +416,16 @@ body.scene4-bg .glow.two{background:#a26376;}
     background:#a86b82;
     margin:28px auto;
     box-shadow:0 0 15px #a86b82;
-    position:relative;
-    z-index:2;
 }
 
 .scene-two p{
     color:#aaa3ad;
     font-size:16px;
-    position:relative;
-    z-index:2;
 }
 
 .scene-two strong{
     color:#e0a4b9;
     font-weight:500;
-}
-
-.scene-two .content:before{
-    content:"";
-    position:absolute;
-    width:70px;
-    height:70px;
-    border:1px solid rgba(210,125,157,.15);
-    top:15px;
-    right:15px;
-    border-left:0;
-    border-bottom:0;
-    border-radius:0 20px 0 0;
-}
-
-.scene-two .content > *{
-    position:relative;
-    z-index:2;
-}
-
-.scene-two .content{
-    animation:cardFloat 6s ease-in-out infinite;
-}
-
-@keyframes cardFloat{
-    0%,100%{transform:translateY(0);}
-    50%{transform:translateY(-6px);}
 }
 
 /* المرحلة الثالثة */
@@ -517,24 +458,18 @@ body.scene4-bg .glow.two{background:#a26376;}
 .scene-three .orbit:before{
     width:240px;
     height:90px;
-    transform:rotate(25deg);
     animation:orbitRotate 9s linear infinite;
 }
 
 .scene-three .orbit:after{
     width:90px;
     height:240px;
-    transform:rotate(25deg);
     animation:orbitRotateReverse 11s linear infinite;
 }
 
 @keyframes orbitFloat{
-    0%,100%{
-        transform:translateY(0);
-    }
-    50%{
-        transform:translateY(-7px);
-    }
+    0%,100%{transform:translateY(0);}
+    50%{transform:translateY(-7px);}
 }
 
 @keyframes orbitRotate{
@@ -556,28 +491,6 @@ body.scene4-bg .glow.two{background:#a26376;}
         0 0 25px 8px rgba(190,165,215,.25),
         0 0 55px 15px rgba(160,125,190,.1);
     animation:pulse 3s ease-in-out infinite;
-    position:relative;
-    z-index:2;
-}
-
-.scene-three .core:after{
-    content:"";
-    position:absolute;
-    inset:-25px;
-    border:1px solid rgba(210,190,225,.08);
-    border-radius:50%;
-    animation:coreRing 2.8s ease-in-out infinite;
-}
-
-@keyframes coreRing{
-    0%,100%{
-        transform:scale(.7);
-        opacity:.15;
-    }
-    50%{
-        transform:scale(1.2);
-        opacity:.6;
-    }
 }
 
 @keyframes pulse{
@@ -618,7 +531,12 @@ body.scene4-bg .glow.two{background:#a26376;}
 .scene-four .content{
     padding:55px 30px;
     border-radius:40px;
-    background:linear-gradient(145deg,rgba(255,255,255,.05),rgba(255,255,255,.008));
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.05),
+            rgba(255,255,255,.008)
+        );
     border:1px solid rgba(220,170,181,.15);
     box-shadow:
         0 25px 100px rgba(0,0,0,.5),
@@ -646,38 +564,14 @@ body.scene4-bg .glow.two{background:#a26376;}
     font-size:28px;
     color:#d7a5b1;
     animation:heartbeat 3s ease-in-out infinite;
-    box-shadow:0 0 35px rgba(209,135,157,.08);
-    position:relative;
-}
-
-.scene-four-icon:after{
-    content:"";
-    position:absolute;
-    inset:-14px;
-    border-radius:50%;
-    border:1px solid rgba(220,160,175,.06);
-    animation:finalRing 4s ease-in-out infinite;
-}
-
-@keyframes finalRing{
-    0%,100%{
-        transform:scale(.85);
-        opacity:.1;
-    }
-    50%{
-        transform:scale(1.15);
-        opacity:.5;
-    }
 }
 
 @keyframes heartbeat{
     0%,100%{
         transform:scale(1);
-        box-shadow:0 0 30px rgba(209,135,157,.05);
     }
     50%{
         transform:scale(1.08);
-        box-shadow:0 0 45px rgba(209,135,157,.13);
     }
 }
 
@@ -697,24 +591,11 @@ body.scene4-bg .glow.two{background:#a26376;}
     line-height:2.5;
 }
 
-.scene-four .message:first-line{
-    color:#eee;
-}
-
 .scene-four .final{
     margin-top:32px;
     color:#817981;
     font-size:13px;
     line-height:2.3;
-    opacity:0;
-    transform:translateY(12px);
-    transition:opacity 1.5s ease,transform 1.5s ease;
-}
-
-.scene-four.active .final{
-    opacity:1;
-    transform:translateY(0);
-    transition-delay:1.5s;
 }
 
 .scene-four .final span{
@@ -730,29 +611,12 @@ body.scene4-bg .glow.two{background:#a26376;}
     animation:heartbeat 3s ease-in-out infinite;
 }
 
-/* انتقالات النصوص */
-.scene.active .number,
-.scene.active h1,
-.scene.active h2,
-.scene.active p,
-.scene.active .text,
-.scene.active .message{
+/* دخول النصوص */
+#s1:checked ~ .page .scene-one .content,
+#s2:checked ~ .page .scene-two .content,
+#s3:checked ~ .page .scene-three .content,
+#s4:checked ~ .page .scene-four .content{
     animation:fadeUp 1s ease both;
-}
-
-.scene.active .number{
-    animation-delay:.2s;
-}
-
-.scene.active h1,
-.scene.active h2{
-    animation-delay:.35s;
-}
-
-.scene.active p,
-.scene.active .text,
-.scene.active .message{
-    animation-delay:.55s;
 }
 
 @keyframes fadeUp{
@@ -768,33 +632,11 @@ body.scene4-bg .glow.two{background:#a26376;}
     }
 }
 
-.scene.active .content{
-    animation-delay:.1s;
-}
-
-/* وميض خفيف عند تغيير المرحلة */
-.scene.active:after{
-    content:"";
-    position:absolute;
-    inset:0;
-    pointer-events:none;
-    background:radial-gradient(circle at center,rgba(255,255,255,.035),transparent 45%);
-    opacity:0;
-    animation:sceneFlash 1.5s ease;
-}
-
-@keyframes sceneFlash{
-    0%{opacity:.7;}
-    100%{opacity:0;}
-}
-
+/* الهاتف */
 @media(max-width:600px){
+
     .scene{
         padding:20px;
-    }
-
-    .content{
-        width:94vw;
     }
 
     .scene-two .content,
@@ -821,176 +663,190 @@ body.scene4-bg .glow.two{background:#a26376;}
         width:27px;
     }
 
-    .next{
-        bottom:24px;
+    .nav label{
         padding:10px 24px;
-    }
-}
-
-@media(prefers-reduced-motion:reduce){
-    *{
-        animation:none!important;
-        transition:none!important;
     }
 }
 </style>
 </head>
 
-<body class="scene1-bg">
+<body>
 
-<div id="particles"></div>
+<!-- مفاتيح المراحل -->
+<input type="radio" name="scene" id="s1" checked>
+<input type="radio" name="scene" id="s2">
+<input type="radio" name="scene" id="s3">
+<input type="radio" name="scene" id="s4">
 
-<div class="glow one"></div>
-<div class="glow two"></div>
+<div class="page">
 
-<div class="progress">
-    <span class="active"></span>
-    <span></span>
-    <span></span>
-    <span></span>
+    <div id="particles">
+        <span class="particle"></span>
+        <span class="particle"></span>
+        <span class="particle"></span>
+        <span class="particle"></span>
+        <span class="particle"></span>
+        <span class="particle"></span>
+        <span class="particle"></span>
+        <span class="particle"></span>
+        <span class="particle"></span>
+        <span class="particle"></span>
+        <span class="particle"></span>
+        <span class="particle"></span>
+        <span class="particle"></span>
+        <span class="particle"></span>
+    </div>
+
+    <div class="glow one"></div>
+    <div class="glow two"></div>
+
+    <div class="progress">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <div class="scenes">
+
+        <!-- المرحلة الأولى -->
+        <section class="scene scene-one">
+            <div class="content">
+
+                <div class="moon"></div>
+
+                <div class="number">01 / 04</div>
+
+                <h1>تره بس إنتِ بالستوري لعلمكي 🙂...</h1>
+
+                <div class="sub">
+                    لا تستعجلين بالحكم...
+                    <br>
+                    يجوز أكو سبب ورا هالكلام🤔
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- المرحلة الثانية -->
+        <section class="scene scene-two">
+            <div class="content">
+
+                <div class="number">02 / 04</div>
+
+                <div class="small">مو كل شيء صدفة</div>
+
+                <h2>لأن مو كل شخص أنتظر أشوف أخباره...</h2>
+
+                <div class="line"></div>
+
+                <p>
+                    أكو شخص واحد...
+                    <br>
+                    حتى لو ما حچيت وياه،
+                    <br>
+                    يبقى عندك فضول تعرف شلون صار يومه.
+                    <br><br>
+                    <strong>وجوده أحيانًا يغير مزاج اليوم كله.</strong>
+                </p>
+
+            </div>
+        </section>
+
+
+        <!-- المرحلة الثالثة -->
+        <section class="scene scene-three">
+            <div class="content">
+
+                <div class="number">03 / 04</div>
+
+                <div class="orbit">
+                    <div class="core"></div>
+                </div>
+
+                <h2>يمكن تعرفين منو المقصودة...</h2>
+
+                <div class="text">
+                    إذا شفتي نفسك المقصودة...
+                    <br>
+                    <span class="highlight">لا، مو صدفة.</span>
+                    <br><br>
+                    يمكن مرات اشاقة،
+                    <br>
+                    بس الحقيقة إن وجودكي
+                    <br>
+                    <span class="highlight">مو عادي بالنسبة إلي.</span>
+                </div>
+
+                <div class="quiet">
+                    وأكو شعور... مو مجرد شقة.
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- المرحلة الرابعة -->
+        <section class="scene scene-four">
+            <div class="content">
+
+                <div class="number">04 / 04</div>
+
+                <div class="scene-four-icon">♡</div>
+
+                <h2>وبالمناسبة...</h2>
+
+                <div class="message">
+                    اشونكي؟
+                    <br>
+                    اخباركي؟
+                    <br><br>
+                    إن شاء الله طول عمركي
+                    <br>
+                    تبقين زينة وبأحسن حال.
+                </div>
+
+                <div class="final">
+                    يمكن كل الكلام اللي قبل
+                    <br>
+                    كان إله معنى...
+                    <br><br>
+                    انتي،
+                    <br>
+                    <span>الوحيدة الي اتمنالها كل الخير Z/A</span>
+                </div>
+
+                <div class="heart">♡</div>
+
+            </div>
+        </section>
+
+    </div>
+
+
+    <!-- أزرار الانتقال -->
+    <div class="nav">
+
+        <label for="s2" class="next1">
+            التالي
+        </label>
+
+        <label for="s3" class="next2">
+            التالي
+        </label>
+
+        <label for="s4" class="next3">
+            التالي
+        </label>
+
+        <label for="s1" class="next4">
+            من البداية
+        </label>
+
+    </div>
+
 </div>
 
-<div class="wrapper">
-
-    <section class="scene scene-one active">
-        <div class="content">
-            <div class="moon"></div>
-
-            <div class="number">01 / 04</div>
-
-            <h1>تره بس إنتِ بالستوري لعلمكي 🙂...</h1>
-
-            <div class="sub">
-                لا تستعجلين بالحكم...
-                <br>
-                يجوز أكو سبب ورا هالكلام🤔
-            </div>
-        </div>
-    </section>
-
-    <section class="scene scene-two">
-        <div class="content">
-            <div class="number">02 / 04</div>
-
-            <div class="small">مو كل شيء صدفة</div>
-
-            <h2>لأن مو كل شخص أنتظر أشوف أخباره...</h2>
-
-            <div class="line"></div>
-
-            <p>
-                أكو شخص واحد...
-                <br>
-                حتى لو ما حچيت وياه،
-                <br>
-                يبقى عندك فضول تعرف شلون صار يومه.
-                <br><br>
-                <strong>وجوده أحيانًا يغير مزاج اليوم كله.</strong>
-            </p>
-        </div>
-    </section>
-
-    <section class="scene scene-three">
-        <div class="content">
-
-            <div class="number">03 / 04</div>
-
-            <div class="orbit">
-                <div class="core"></div>
-            </div>
-
-            <h2>يمكن تعرفين منو المقصودة...</h2>
-
-            <div class="text">
-                إذا شفتي نفسك المقصودة...
-                <br>
-                <span class="highlight">لا، مو صدفة.</span>
-                <br><br>
-                يمكن مرات اشاقة،
-                <br>
-                بس الحقيقة إن وجودكي
-                <br>
-                <span class="highlight">مو عادي بالنسبة إلي.</span>
-            </div>
-
-            <div class="quiet">
-                وأكو شعور... مو مجرد شقة.
-            </div>
-
-        </div>
-    </section>
-
-    <section class="scene scene-four">
-        <div class="content">
-
-            <div class="number">04 / 04</div>
-
-            <div class="scene-four-icon">♡</div>
-
-            <h2>وبالمناسبة...</h2>
-
-            <div class="message">
-                اشونكي؟
-                <br>
-                اخباركي؟
-                <br><br>
-                إن شاء الله طول عمركي
-                <br>
-                تبقين زينة وبأحسن حال.
-            </div>
-
-            <div class="final">
-                يمكن كل الكلام اللي قبل
-                <br>
-                كان إله معنى...
-                <br><br>
-                انتي،
-                <br>
-                <span>الوحيدة الي اتمنالها كل الخير Z/A</span>
-            </div>
-
-            <div class="heart">♡</div>
-
-        </div>
-    </section>
-
-</div>
-
-<button class="next" id="nextBtn" type="button">التالي</button>
-
-<script>
-(function(){
-
-    "use strict";
-
-    const scenes = document.querySelectorAll(".scene");
-    const progress = document.querySelectorAll(".progress span");
-    const nextBtn = document.getElementById("nextBtn");
-    const particles = document.getElementById("particles");
-
-    let current = 0;
-
-    const bodyClasses = [
-        "scene1-bg",
-        "scene2-bg",
-        "scene3-bg",
-        "scene4-bg"
-    ];
-
-    function showScene(index){
-
-        if(index < 0){
-            index = 0;
-        }
-
-        if(index >= scenes.length){
-            index = scenes.length - 1;
-        }
-
-        scenes.forEach(function(scene, i){
-
-            if(i === index){
-                scene.classList.add("active");
-            }else{
-                scene.classList.remove("active");
- 
+</body>
+</html>
