@@ -1,1 +1,122 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SQL Database — أحمد</title>
+<style>
+:root{--bg:#050b14;--panel:#0d1929;--text:#edf6ff;--muted:#9db0c6;--cyan:#38bdf8;--blue:#818cf8;--green:#34d399;--red:#fb7185;--border:rgba(255,255,255,.09)}
+*{box-sizing:border-box;scroll-behavior:smooth}
+body{margin:0;background:radial-gradient(circle at 80% 0%,rgba(56,189,248,.14),transparent 30%),linear-gradient(135deg,#040912,#071321 55%,#091728);color:var(--text);font-family:Tahoma,Arial,sans-serif;line-height:1.9}
+.top-note{position:fixed;left:18px;top:16px;z-index:20;padding:9px 15px;border-radius:999px;background:rgba(8,20,35,.9);border:1px solid rgba(56,189,248,.25);color:#dff8ff;font-size:13px;animation:glow 10s ease-in-out infinite}
+@keyframes glow{0%,100%{box-shadow:0 0 0 rgba(56,189,248,0);text-shadow:none}50%{box-shadow:0 0 30px rgba(56,189,248,.65);text-shadow:0 0 13px rgba(56,189,248,.9);color:#fff}}
+header{text-align:center;padding:105px 20px 55px}.badge{display:inline-block;padding:7px 14px;border:1px solid var(--border);border-radius:999px;background:rgba(255,255,255,.04);color:#bcefff;font-size:13px}
+h1{font-size:clamp(42px,8vw,78px);margin:18px 0 5px;letter-spacing:-2px}.subtitle{color:var(--muted);max-width:700px;margin:auto}.author{margin-top:17px;color:#cfe7fa;font-size:14px}
+.container{width:min(900px,calc(100% - 28px));margin:auto}
+section{background:rgba(13,25,41,.8);border:1px solid var(--border);border-radius:24px;padding:30px;margin-bottom:22px;box-shadow:0 20px 60px rgba(0,0,0,.22)}
+section h2{margin:0 0 10px;font-size:28px}section h3{color:#d8edff;margin-top:24px}.lead{color:var(--muted)}
+.step{display:flex;gap:13px;align-items:flex-start;margin:15px 0}.num{min-width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--cyan),var(--blue));color:#fff;font-weight:bold}
+.explain,.success,.warning{padding:15px 18px;border-radius:13px;margin:18px 0}.explain{border-right:3px solid var(--cyan);background:rgba(56,189,248,.055)}.success{border-right:3px solid var(--green);background:rgba(52,211,153,.055)}.warning{border-right:3px solid var(--red);background:rgba(251,113,133,.06)}
+pre{direction:ltr;text-align:left;white-space:pre-wrap;background:#03070d;border:1px solid rgba(255,255,255,.08);border-radius:15px;padding:18px;overflow:auto;color:#dff6ff;font:14px/1.7 Consolas,monospace}
+.command{color:#8ee8ff;font-family:Consolas,monospace;background:rgba(56,189,248,.08);border:1px solid rgba(56,189,248,.15);border-radius:7px;padding:2px 7px;direction:ltr;display:inline-block}
+.flow{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:22px}.flow div{padding:18px;text-align:center;border:1px solid var(--border);background:rgba(255,255,255,.035);border-radius:16px}.flow b{display:block;color:#fff;margin-bottom:5px}
+footer{text-align:center;color:var(--muted);padding:30px 15px 55px}
+.modal{position:fixed;inset:0;background:rgba(1,5,12,.82);backdrop-filter:blur(10px);z-index:100;display:flex;align-items:center;justify-content:center;padding:20px}.modal.hidden{display:none}
+.welcome{width:min(540px,100%);background:linear-gradient(145deg,#10243a,#081525);border:1px solid rgba(56,189,248,.28);border-radius:28px;padding:35px;text-align:center;box-shadow:0 30px 100px rgba(0,0,0,.55);animation:pop .35s ease}.icon{font-size:48px}.welcome h2{font-size:31px;margin:8px 0}.welcome p{color:var(--muted)}
+@keyframes pop{from{transform:scale(.94);opacity:0}to{transform:scale(1);opacity:1}}
+.btn{border:0;background:linear-gradient(135deg,var(--cyan),var(--blue));color:white;font-weight:bold;padding:12px 28px;border-radius:12px;cursor:pointer;font-size:15px}
+.top-note.pulse{animation:strongGlow 1.8s ease}@keyframes strongGlow{0%{transform:scale(1);box-shadow:0 0 0 rgba(56,189,248,0)}35%{transform:scale(1.06);box-shadow:0 0 38px rgba(56,189,248,.9),0 0 70px rgba(129,140,248,.45);text-shadow:0 0 16px rgba(56,189,248,1);color:#fff}100%{transform:scale(1);box-shadow:0 0 0 rgba(56,189,248,0)}}
+@media(max-width:700px){.top-note{left:10px;top:10px;font-size:11px}header{padding-top:85px}section{padding:22px}.flow{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
 
+<div class="top-note">صُمم هذا الموقع من أجلك ✦</div>
+
+<div class="modal" id="welcome">
+<div class="welcome">
+<div class="icon">🌝🌝🌝</div>
+<h2>مرحبًا زينب السچاچة</h2>
+<p>هذا الموقع مخصص لشرح أوامر <b>SQL Database</b> بطريقة مرتبة وبسيطة، حتى تكون مراجعة المادة أسهل وأوضح.</p>
+<p>تم تصميم هذا الموقع بواسطة <b>أحمد</b>.</p>
+<button class="btn" id="startBtn">ابدئي الشرح</button>
+</div>
+</div>
+
+<header>
+<span class="badge">SQL Database • شرح الأوامر الأساسية</span>
+<h1>SQL Database</h1>
+<p class="subtitle">شرح مبسط للأوامر البرمجية الخاصة بإنشاء قاعدة البيانات، اختيارها، ثم حذفها باستخدام SQL Server.</p>
+<div class="author">تم تصميم هذا الموقع بواسطة أحمد</div>
+</header>
+
+<main class="container">
+
+<section>
+<h2>1. إنشاء قاعدة بيانات — CREATE DATABASE</h2>
+<p class="lead">لإنشاء قاعدة بيانات جديدة في SQL Server نستخدم الأمر <span class="command">CREATE DATABASE</span>.</p>
+<div class="step"><span class="num">1</span><div>افتح <b>SQL Server Management Studio</b> وافتح نافذة <b>New Query</b>.</div></div>
+<div class="step"><span class="num">2</span><div>اكتب الأمر التالي، مع استبدال <b>db_name</b> بالاسم الذي تريده.</div></div>
+<pre>CREATE DATABASE db_name;</pre>
+<h3>مثال</h3>
+<pre>CREATE DATABASE dbStudents;</pre>
+<div class="explain">هنا قمنا بإنشاء قاعدة بيانات اسمها <b>dbStudents</b>. بعد تنفيذ الأمر ستظهر قاعدة البيانات ضمن Databases.</div>
+<div class="success"><b>النتيجة:</b> أصبحت لدينا قاعدة بيانات جديدة يمكننا العمل بداخلها.</div>
+</section>
+
+<section>
+<h2>2. اختيار قاعدة البيانات — USE</h2>
+<p class="lead">بعد إنشاء قاعدة البيانات، نحتاج إلى تحديد قاعدة البيانات التي نريد العمل عليها. لهذا نستخدم الأمر <span class="command">USE</span>.</p>
+<h3>الصيغة</h3><pre>USE db_name;</pre>
+<h3>مثال</h3><pre>USE dbStudents;</pre>
+<div class="explain">الأمر <b>USE</b> يخبر SQL Server بأن قاعدة البيانات التي نريد تنفيذ أوامر العمل عليها هي <b>dbStudents</b>.</div>
+<h3>التسلسل</h3><pre>CREATE DATABASE dbStudents;
+USE dbStudents;</pre>
+<div class="success"><b>مهم:</b> نستخدم <b>USE</b> بعد إنشاء قاعدة البيانات حتى نحدد قاعدة البيانات التي نريد العمل عليها.</div>
+</section>
+
+<section>
+<h2>3. حذف قاعدة البيانات — DROP DATABASE</h2>
+<p class="lead">الأمر <span class="command">DROP DATABASE</span> يستخدم لحذف قاعدة بيانات كاملة.</p>
+<h3>الصيغة</h3><pre>DROP DATABASE db_name;</pre>
+<h3>مثال</h3><pre>DROP DATABASE dbStudents;</pre>
+<div class="warning"><b>تحذير:</b> الأمر DROP DATABASE يحذف قاعدة البيانات ومحتوياتها، لذلك يجب استخدامه بحذر.</div>
+<h3>ملاحظة مهمة عن USE والحذف</h3>
+<p>قبل الحذف يجب ألا يكون اتصالك الحالي يستخدم قاعدة البيانات المراد حذفها. لذلك إذا كنت داخل <b>dbStudents</b> وانتقلت إلى حذفها، استخدم قاعدة أخرى مثل <b>master</b> أولًا.</p>
+<pre>USE master;
+DROP DATABASE dbStudents;</pre>
+<div class="explain"><b>الترتيب العملي:</b> أنشئ القاعدة بـ <b>CREATE DATABASE</b>، ثم اخترها بـ <b>USE</b> عند العمل عليها. وعند الرغبة في حذفها، انتقل إلى <b>master</b> ثم نفّذ <b>DROP DATABASE</b>.</div>
+</section>
+
+<section>
+<h2>الخلاصة</h2>
+<p>الأوامر الأساسية في هذا الموقع:</p>
+<div class="flow">
+<div><b>CREATE DATABASE</b>إنشاء قاعدة بيانات</div>
+<div><b>USE</b>اختيار قاعدة البيانات للعمل عليها</div>
+<div><b>DROP DATABASE</b>حذف قاعدة البيانات</div>
+</div>
+<div class="explain"><b>مثال كامل:</b><pre>CREATE DATABASE dbStudents;
+USE dbStudents;
+
+-- بعد الانتهاء:
+USE master;
+DROP DATABASE dbStudents;</pre></div>
+</section>
+
+</main>
+<footer>SQL Database • تم تصميم هذا الموقع بواسطة أحمد</footer>
+
+<script>
+document.getElementById("startBtn").addEventListener("click",function(){
+document.getElementById("welcome").classList.add("hidden");
+});
+setInterval(function(){
+const note=document.querySelector(".top-note");
+note.classList.remove("pulse");
+void note.offsetWidth;
+note.classList.add("pulse");
+},10000);
+</script>
+</body>
+</html>
